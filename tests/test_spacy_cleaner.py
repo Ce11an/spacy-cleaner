@@ -2,7 +2,7 @@ import numpy as np
 import pytest
 import spacy
 
-from spacy_cleaner import core
+import spacy_cleaner
 from spacy_cleaner.utils import helpers
 
 
@@ -30,7 +30,7 @@ def extra_stopword():
 
 @pytest.fixture
 def cleaner(nlp):
-    return core.SpacyCleaner(spacy_model=nlp)
+    return spacy_cleaner.SpacyCleaner(spacy_model=nlp)
 
 
 def test_clean(cleaner, testing_texts):
@@ -49,13 +49,13 @@ def test_vectorise(cleaner, testing_texts):
 
 def test_invalid_extra_stopwords(nlp, extra_stopword):
     with pytest.raises(ValueError):
-        cleaner = core.SpacyCleaner(
+        cleaner = spacy_cleaner.SpacyCleaner(
             nlp, remove_stopwords=False, extra_stopwords=[extra_stopword]
         )
 
 
 def test_valid_extra_stopwords(nlp, extra_stopword):
-    cleaner = core.SpacyCleaner(
+    cleaner = spacy_cleaner.SpacyCleaner(
         nlp, remove_stopwords=True, extra_stopwords=[extra_stopword]
     )
 

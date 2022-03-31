@@ -1,7 +1,7 @@
 import pytest
 import spacy
 
-from spacy_cleaner.core import SpacyCleaner
+from spacy_cleaner.cleaner import SpacyCleaner
 from spacy_cleaner.utils import helpers
 
 

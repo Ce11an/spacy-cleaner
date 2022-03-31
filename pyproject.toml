@@ -10,8 +10,8 @@ description = "Easily clean text with spaCy!"
 readme = "README.md"
 authors = ["spacy-cleaner <hallcellan@gmail.com>"]
 license = "MIT"
-repository = "https://github.com/spacy_text_cleaner/spacy-cleaner"
-homepage = "https://github.com/spacy_text_cleaner/spacy-cleaner"
+repository = "https://github.com/Ce11an/spacy-cleaner"
+homepage = "https://github.com/Ce11an/spacy-cleaner"
 
 # Keywords description https://python-poetry.org/docs/pyproject/#keywords
 keywords = []  #! Update me

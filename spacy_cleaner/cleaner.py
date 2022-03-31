@@ -16,7 +16,7 @@ class SpacyCleaner:
     - remove punctuation
     - remove specified part of speech tags
     - remove stopwords
-    - extra_stopwords
+    - add extra stopwords
     - remove emails
     - remove urls
     - lemmatize strings
@@ -49,7 +49,7 @@ class SpacyCleaner:
 
     def __init__(
         self,
-        spacy_model: Optional[spacy.language.Language],
+        spacy_model: spacy.language.Language,
         remove_numbers: bool = False,
         remove_punctuation: bool = True,
         remove_pos: Optional[List[str]] = None,
