@@ -15,7 +15,7 @@ make docker-build VERSION=latest
 ```
 
 You may provide name and version for the image.
-Default name is `IMAGE := spacy_text_cleaner`.
+Default name is `IMAGE := spacy_cleaner`.
 Default version is `VERSION := latest`.
 
 ```bash

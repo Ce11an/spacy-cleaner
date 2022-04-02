@@ -2,15 +2,15 @@
 
 <div align="center">
 
-[![Build status](https://github.com/spacy_text_cleaner/spacy-cleaner/workflows/build/badge.svg?branch=master&event=push)](https://github.com/spacy_text_cleaner/spacy-cleaner/actions?query=workflow%3Abuild)
+[![Build status](https://github.com/spacy_text_cleaner/spacy-cleaner/workflows/build/badge.svg?branch=main&event=push)](https://github.com/spacy_text_cleaner/spacy-cleaner/actions?query=workflow%3Abuild)
 [![Python Version](https://img.shields.io/pypi/pyversions/spacy-cleaner.svg)](https://pypi.org/project/spacy-cleaner/)
 [![Dependencies Status](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)](https://github.com/spacy_text_cleaner/spacy-cleaner/pulls?utf8=%E2%9C%93&q=is%3Apr%20author%3Aapp%2Fdependabot)
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Security: bandit](https://img.shields.io/badge/security-bandit-green.svg)](https://github.com/PyCQA/bandit)
-[![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/spacy_text_cleaner/spacy-cleaner/blob/master/.pre-commit-config.yaml)
+[![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/spacy_text_cleaner/spacy-cleaner/blob/main/.pre-commit-config.yaml)
 [![Semantic Versions](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--versions-e10079.svg)](https://github.com/spacy_text_cleaner/spacy-cleaner/releases)
-[![License](https://img.shields.io/github/license/spacy_text_cleaner/spacy-cleaner)](https://github.com/spacy_text_cleaner/spacy-cleaner/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/spacy_text_cleaner/spacy-cleaner)](https://github.com/spacy_text_cleaner/spacy-cleaner/blob/main/LICENSE)
 ![Coverage Report](assets/images/coverage.svg)
 
 Easily clean text with spaCy!
@@ -43,7 +43,7 @@ poetry run spacy-cleaner --help
 
 ### Makefile usage
 
-[`Makefile`](https://github.com/spacy_text_cleaner/spacy-cleaner/blob/master/Makefile) contains a lot of functions for faster development.
+[`Makefile`](https://github.com/spacy_text_cleaner/spacy-cleaner/blob/main/Makefile) contains a lot of functions for faster development.
 
 <details>
 <summary>1. Download and remove Poetry</summary>
@@ -74,7 +74,7 @@ Install requirements:
 make install
 ```
 
-Pre-commit hooks coulb be installed after `git init` via
+Pre-commit hooks can be installed after `git init` via
 
 ```bash
 make pre-commit-install
@@ -104,7 +104,7 @@ make check-codestyle
 
 > Note: `check-codestyle` uses `isort`, `black` and `darglint` library
 
-Update all dev libraries to the latest version using one comand
+Update all dev libraries to the latest version using one command
 
 ```bash
 make update-dev-deps
@@ -124,8 +124,8 @@ This command launches `Poetry` integrity checks as well as identifies security i
 make check-safety
 ```
 
-</p>
 </details>
+<p>
 
 </p>
 </details>
@@ -195,7 +195,7 @@ Remove docker image with
 make docker-remove
 ```
 
-More information [about docker](https://github.com/spacy_text_cleaner/spacy-cleaner/tree/master/docker).
+More information [about docker](https://github.com/spacy_text_cleaner/spacy-cleaner/tree/main/docker).
 
 </p>
 </details>
@@ -221,7 +221,7 @@ Delete .DS_STORE files
 make dsstore-remove
 ```
 
-Remove .mypycache
+Remove .mypy_cache
 
 ```bash
 make mypycache-remove
@@ -247,7 +247,7 @@ We use [`Release Drafter`](https://github.com/marketplace/actions/release-drafte
 ### List of labels and corresponding titles
 
 |               **Label**               |  **Title in Releases**  |
-| :-----------------------------------: | :---------------------: |
+|:-------------------------------------:|:-----------------------:|
 |       `enhancement`, `feature`        |       🚀 Features       |
 | `bug`, `refactoring`, `bugfix`, `fix` | 🔧 Fixes & Refactoring  |
 |       `build`, `ci`, `testing`        | 📦 Build System & CI/CD |
@@ -255,15 +255,15 @@ We use [`Release Drafter`](https://github.com/marketplace/actions/release-drafte
 |            `documentation`            |    📝 Documentation     |
 |            `dependencies`             | ⬆️ Dependencies updates |
 
-You can update it in [`release-drafter.yml`](https://github.com/spacy_text_cleaner/spacy-cleaner/blob/master/.github/release-drafter.yml).
+You can update it in [`release-drafter.yml`](https://github.com/spacy_text_cleaner/spacy-cleaner/blob/main/.github/release-drafter.yml).
 
 GitHub creates the `bug`, `enhancement`, and `documentation` labels for you. Dependabot creates the `dependencies` label. Create the remaining labels on the Issues tab of your GitHub repository, when you need them.
 
 ## 🛡 License
 
-[![License](https://img.shields.io/github/license/spacy_text_cleaner/spacy-cleaner)](https://github.com/spacy_text_cleaner/spacy-cleaner/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/spacy_text_cleaner/spacy-cleaner)](https://github.com/spacy_text_cleaner/spacy-cleaner/blob/main/LICENSE)
 
-This project is licensed under the terms of the `MIT` license. See [LICENSE](https://github.com/spacy_text_cleaner/spacy-cleaner/blob/master/LICENSE) for more details.
+This project is licensed under the terms of the `MIT` license. See [LICENSE](https://github.com/spacy_text_cleaner/spacy-cleaner/blob/main/LICENSE) for more details.
 
 ## 📃 Citation
 

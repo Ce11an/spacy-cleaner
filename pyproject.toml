@@ -10,8 +10,8 @@ description = "Easily clean text with spaCy!"
 readme = "README.md"
 authors = ["spacy-cleaner <hallcellan@gmail.com>"]
 license = "MIT"
-repository = "https://github.com/spacy_text_cleaner/spacy-cleaner"
-homepage = "https://github.com/spacy_text_cleaner/spacy-cleaner"
+repository = "https://github.com/Ce11an/spacy-cleaner"
+homepage = "https://github.com/Ce11an/spacy-cleaner"
 
 # Keywords description https://python-poetry.org/docs/pyproject/#keywords
 keywords = []  #! Update me
@@ -140,14 +140,15 @@ addopts = [
 ]
 
 [tool.coverage.run]
-source = ["tests"]
-
-[coverage.paths]
-source = "spacy-cleaner"
-
-[coverage.run]
 branch = true
+source = ["spacy-cleaner","tests"]
+omit = ["*__init__*"]
 
-[coverage.report]
+
+[tool.coverage.report]
 fail_under = 50
 show_missing = true
+exclude_lines = [
+  "if __name__ == .__main__.:",
+  "pragma: no cover",
+]
