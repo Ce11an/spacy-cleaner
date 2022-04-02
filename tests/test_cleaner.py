@@ -4,6 +4,8 @@ import spacy
 
 import spacy_cleaner
 
+spacy.cli.download("en_core_web_sm")
+
 
 @pytest.fixture
 def nlp():
