@@ -10,7 +10,7 @@ assignees:
 
 <!-- Mark with an `x` all the checkboxes that apply (like `[x]`) -->
 
-- [ ] I've searched the project's [`issues`](https://github.com/spacy_text_cleaner/spacy-text-cleaner/issues?q=is%3Aissue).
+- [ ] I've searched the project's [`issues`](https://github.com/Ce11an/spacy-cleaner/issues?q=is%3Aissue).
 
 ## ❓ Question
 

@@ -1,4 +1,4 @@
-# Docker for spacy-text-cleaner
+# Docker for spacy-cleaner
 
 ## Installation
 
