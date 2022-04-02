@@ -42,9 +42,6 @@ spacy = "3.2.2"
 mypy = "0.920"
 click = "8.0.4"
 
-[tool.poetry.dependencies.en_core_web_sm]
-url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.2.0/en_core_web_sm-3.2.0.tar.gz"
-
 [tool.poetry.dev-dependencies]
 bandit = "^1.7.1"
 black = {version = "^21.10b0", allow-prereleases = true}
