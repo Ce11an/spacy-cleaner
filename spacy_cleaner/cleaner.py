@@ -24,8 +24,7 @@ class SpacyCleaner:
 
     Examples:
 
-        helpers.download_model("en_core_web_sm")
-        nlp = helpers.load_model("en_core_web_sm")
+        nlp = spacy.load("en_core_web_sm")
 
         cleaner = SpacyCleaner(
             spacy_model=nlp,
@@ -60,19 +59,18 @@ class SpacyCleaner:
         lemmatize: bool = False,
     ) -> None:
         """
-        :param spacy_model: Specify what spaCy model to use to clean text. If None,
-            `en_core_web_sm` will be loaded.
+        :param spacy_model: Specify what spaCy model to use to clean text.
         :param remove_numbers: If True, removes numbers from text. Default is False.
         :param remove_punctuation: If True,removes punctuation from text. Default is
             True.
-        :param remove_pos: Specify the part-of-speech to remove from text.
+        :param remove_pos: Specify the part-of-speech to remove from text. See:
+            https://spacy.io/usage/linguistic-features
         :param remove_stopwords: If True, removes stopwords from text. Default is False.
         :param extra_stopwords: Extra stopwords to be removed. Default is None.
         :param remove_email: If True, removes emails from text. Default is True.
         :param remove_url: If True, removes URLs from text. Default is True.
         :param lemmatize: If True, lemmatizes remaining tokens. Default is False.
 
-        :raises OSError: If the spaCy model is not installed.
         :raises ValueError: If remove_stopwords=False and extra_stopwords is not None.
 
         """
@@ -149,7 +147,7 @@ class SpacyCleaner:
 
         for tok in doc:
 
-            if self.remove_pos and (tok in self.remove_pos) and tok.pos_:
+            if self.remove_pos and tok.pos_ in self.remove_pos:
                 continue
 
             if self.remove_stopwords and tok.is_stop:
