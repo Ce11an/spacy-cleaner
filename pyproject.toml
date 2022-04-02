@@ -140,14 +140,15 @@ addopts = [
 ]
 
 [tool.coverage.run]
-source = ["tests"]
-
-[coverage.paths]
-source = "spacy-cleaner"
-
-[coverage.run]
 branch = true
+source = ["spacy-cleaner","tests"]
+omit = ["*__init__*"]
 
-[coverage.report]
+
+[tool.coverage.report]
 fail_under = 50
 show_missing = true
+exclude_lines = [
+  "if __name__ == .__main__.:",
+  "pragma: no cover",
+]
