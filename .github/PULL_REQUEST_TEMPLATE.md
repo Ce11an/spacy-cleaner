@@ -21,8 +21,8 @@
 
 <!-- Mark with an `x` all the checkboxes that apply (like `[x]`) -->
 
-- [ ] I've read the [`CODE_OF_CONDUCT.md`](https://github.com/spacy_text_cleaner/spacy-text-cleaner/blob/master/CODE_OF_CONDUCT.md) document.
-- [ ] I've read the [`CONTRIBUTING.md`](https://github.com/spacy_text_cleaner/spacy-text-cleaner/blob/master/CONTRIBUTING.md) guide.
+- [ ] I've read the [`CODE_OF_CONDUCT.md`](https://github.com/spacy_cleaner/spacy-cleaner/blob/master/CODE_OF_CONDUCT.md) document.
+- [ ] I've read the [`CONTRIBUTING.md`](https://github.com/spacy_cleaner/spacy-cleaner/blob/master/CONTRIBUTING.md) guide.
 - [ ] I've updated the code style using `make codestyle`.
 - [ ] I've written tests for all new methods and classes that I created.
-- [ ] I've written the docstring in Google format for all the methods and classes that I used.
+- [ ] I've written the docstring in Sphinx format for all the methods and classes that I used.
