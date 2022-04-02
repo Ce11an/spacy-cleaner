@@ -7,7 +7,7 @@
 
 Vulnerabilities can be reported by emailing core members:
 
-- spacy-cleaner [hallcellan@gmail.com](mailto:hallcellan@gmail.com)
+- Ce11an: [hallcellan@gmail.com](mailto:hallcellan@gmail.com)
 
 Please include the requested information listed below (as much as you can provide) to help us better understand the nature and scope of the possible issue:
 
