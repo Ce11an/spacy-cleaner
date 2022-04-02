@@ -3,12 +3,11 @@ import pytest
 import spacy
 
 import spacy_cleaner
-from spacy_cleaner.utils import helpers
 
 
 @pytest.fixture
 def nlp():
-    return helpers.load_model("en_core_web_sm")
+    return spacy.load("en_core_web_sm")
 
 
 @pytest.fixture
@@ -62,3 +61,15 @@ def test_valid_extra_stopwords(nlp, extra_stopword):
     doc = nlp("Cellan is a Welsh name.")
     assert isinstance(nlp.vocab["cellan"], spacy.lexeme.Lexeme)
     assert doc[0].check_flag(spacy.attrs.IS_STOP) is True
+
+
+def test_remove_pos_remove_numbers_lemmatization_(nlp):
+    cleaner = spacy_cleaner.SpacyCleaner(
+        nlp,
+        remove_numbers=True,
+        remove_pos=["VERB", "AUX"],
+        lemmatize=True,
+    )
+
+    clean_texts = cleaner.clean(["Annie is travelling to London at 9 AM"])
+    assert clean_texts == ["annie london"]

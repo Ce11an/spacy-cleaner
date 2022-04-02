@@ -1,7 +1,8 @@
 from typing import List, Optional
 
+import spacy
+
 import spacy_cleaner
-from spacy_cleaner.utils import helpers
 
 
 def run_clean(
@@ -47,7 +48,7 @@ def run_clean(
     """
 
     cleaner = spacy_cleaner.SpacyCleaner(
-        spacy_model=helpers.load_model("en_core_web_sm"),
+        spacy_model=spacy.load("en_core_web_sm"),
         remove_numbers=remove_numbers,
         remove_punctuation=remove_punctuation,
         remove_pos=remove_pos,
