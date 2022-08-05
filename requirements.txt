@@ -24,7 +24,7 @@ pygments==2.11.2; python_full_version >= "3.6.2" and python_full_version < "4.0.
 pyparsing==3.0.7; python_version >= "3.6"
 requests==2.27.1; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.6.0" and python_version >= "3.6"
 rich==10.16.2; python_full_version >= "3.6.2" and python_full_version < "4.0.0"
-shellingham==1.4.0; python_version >= "3.6"
+shellingham==1.5.0; python_version >= "3.6"
 smart-open==5.2.1; python_version >= "3.6" and python_version < "4.0"
 spacy-legacy==3.0.9; python_version >= "3.6"
 spacy-loggers==1.0.2; python_version >= "3.6"
