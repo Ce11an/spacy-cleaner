@@ -234,7 +234,7 @@ This project is licensed under the terms of the `MIT` license. See [LICENSE](htt
 ```bibtex
 @misc{spacy-cleaner,
   author = {spacy-cleaner},
-  title = {eEasily clean text with spaCy!},
+  title = {Easily clean text with spaCy!},
   year = {2022},
   publisher = {GitHub},
   journal = {GitHub repository},
