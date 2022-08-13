@@ -38,7 +38,7 @@ jobs:
 
       - name: Get full Python version
         id: full-python-version
-        run: echo ::set-output name=version::$(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))")
+        run: python -c "import sys; print(sys.version)"
 
       - name: Bootstrap poetry
         run: |
