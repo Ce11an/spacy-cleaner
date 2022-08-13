@@ -29,18 +29,6 @@ or install with `Poetry`
 poetry add spacy-cleaner
 ```
 
-Then you can run
-
-```bash
-spacy-cleaner --help
-```
-
-or with `Poetry`:
-
-```bash
-poetry run spacy-cleaner --help
-```
-
 ### Makefile usage
 
 [`Makefile`](https://github.com/Ce11an/spacy-cleaner/blob/main/Makefile) contains a lot of functions for faster development.
