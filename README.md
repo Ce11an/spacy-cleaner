@@ -165,7 +165,7 @@ make test && make check-codestyle && make mypy && make check-safety
 </details>
 
 <details>
-<summary>9. Cleanup</summary>
+<summary>7. Cleanup</summary>
 <p>
 Delete pycache files
 
