@@ -37,10 +37,14 @@ jobs:
         run: poetry run pip install pytest-github-actions-annotate-failures
 
       - name: Run pytest
-        run: poetry run pytest -v -s --cov-fail-under 90 --cov spacy_cleaner/
+        run: poetry run --cov-fail-under 90 --cov spacy_cleaner/
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
+        run:
+          curl -Os https://uploader.codecov.io/latest/linux/codecov
+          chmod +x codecov
+          ./codecov -t ${CODECOV_TOKEN}
         with:
           fail_ci_if_error: true
           verbose: true
