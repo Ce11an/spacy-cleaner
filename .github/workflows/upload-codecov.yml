@@ -37,7 +37,7 @@ jobs:
         run: poetry run pip install pytest-github-actions-annotate-failures
 
       - name: Run pytest
-        run: poetry run pytest --fail-under 90 --cov spacy_cleaner/
+        run: poetry run pytest --cov spacy_cleaner/
 
       - name: Upload coverage to Codecov
         run:
