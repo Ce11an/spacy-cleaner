@@ -74,15 +74,11 @@ jobs:
         run: poetry run pip install pytest-github-actions-annotate-failures
 
       - name: Run pytest
-        run: poetry run python -m pytest --cov=./ --cov-report=xml -p no:sugar -q tests/
+        run: poetry run pytest -v -s --cov-fail-under 90 --cov spacy_cleaner/
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
-          directory: ./coverage/reports/
           env_vars: OS,PYTHON
           fail_ci_if_error: true
-          flags: unittests
-          name: codecov-umbrella
-          path_to_write_report: ./coverage/codecov_report.txt
           verbose: true
