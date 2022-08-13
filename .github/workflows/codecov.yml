@@ -1,0 +1,16 @@
+name: codecov
+
+on:
+  push:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: codecov/codecov-action@v3
+        with:
+          fail_ci_if_error: true
+          verbose: true
