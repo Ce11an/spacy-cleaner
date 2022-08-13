@@ -29,18 +29,6 @@ or install with `Poetry`
 poetry add spacy-cleaner
 ```
 
-Then you can run
-
-```bash
-spacy-cleaner --help
-```
-
-or with `Poetry`:
-
-```bash
-poetry run spacy-cleaner --help
-```
-
 ### Makefile usage
 
 [`Makefile`](https://github.com/Ce11an/spacy-cleaner/blob/main/Makefile) contains a lot of functions for faster development.
@@ -131,7 +119,7 @@ make check-safety
 </details>
 
 <details>
-<summary>5. Type checks</summary>
+<summary>4. Type checks</summary>
 <p>
 
 Run `mypy` static type checker
@@ -144,7 +132,7 @@ make mypy
 </details>
 
 <details>
-<summary>6. Tests with coverage badges</summary>
+<summary>5. Tests with coverage badges</summary>
 <p>
 
 Run `pytest`
@@ -157,7 +145,7 @@ make test
 </details>
 
 <details>
-<summary>7. All linters</summary>
+<summary>6. All linters</summary>
 <p>
 
 Of course there is a command to ~~rule~~ run all linters in one:
@@ -171,31 +159,6 @@ the same as:
 ```bash
 make test && make check-codestyle && make mypy && make check-safety
 ```
-
-</p>
-</details>
-
-<details>
-<summary>8. Docker</summary>
-<p>
-
-```bash
-make docker-build
-```
-
-which is equivalent to:
-
-```bash
-make docker-build VERSION=latest
-```
-
-Remove docker image with
-
-```bash
-make docker-remove
-```
-
-More information [about docker](https://github.com/Ce11an/spacy-cleaner/tree/main/docker).
 
 </p>
 </details>

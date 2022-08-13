@@ -1,0 +1,46 @@
+name: Codecov Workflow
+
+on:
+  push:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Get full Python version
+        id: full-python-version
+        run: python -c "import sys; print(sys.version)"
+
+      - name: Bootstrap poetry
+        run: |
+          curl -sL https://install.python-poetry.org | python3 -
+
+      - name: Update PATH
+        run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Configure poetry
+        run: poetry config virtualenvs.in-project true
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Install pytest plugin
+        run: poetry run pip install pytest-github-actions-annotate-failures
+
+      - name: Run pytest
+        run: poetry run pytest -v -s --cov-fail-under 90 --cov spacy_cleaner/
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          fail_ci_if_error: true
+          verbose: true
