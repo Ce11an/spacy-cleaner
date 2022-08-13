@@ -44,6 +44,3 @@ jobs:
           curl -Os https://uploader.codecov.io/latest/linux/codecov
           chmod +x codecov
           ./codecov -t ${CODECOV_TOKEN}
-        with:
-          fail_ci_if_error: true
-          verbose: true
