@@ -1,2 +1,5 @@
+"""Custom exceptions."""
+
+
 class SpacyCleanerMisconfigurationError(Exception):
-    """For misconfigurations of SpacyCleaner."""
+    """Raises when `spacy_cleaner` has been misconfigured."""

@@ -1,3 +1,21 @@
+"""class `Cleaner` allows for configurable cleaning of text using spaCy.
+
+Functionality:
+    - Remove numbers.
+    - Remove punctuation.
+    - Remove part-of-speech tags.
+    - Remove stopwords
+    - Remove emails.
+    - Remove URLs.
+    - Lemmatization.
+
+Typical usage example:
+    texts = ["I won £1000"]
+    nlp = spacy.load("en_core_web_sm")
+    cleaner = Cleaner(nlp, remove_numbers=True)
+    clean_texts = cleaner.clean(texts, disable=["ner"])
+"""
+
 from typing import List, Optional
 
 import warnings
@@ -11,19 +29,39 @@ from spacy_cleaner.cleaners.base_cleaner import BaseCleaner
 
 
 class Cleaner(BaseCleaner):
-    """
-    Cleans text using SpaCy!
+    """Cleans text using SpaCy!
 
-    Args:
+    Attributes:
       model: The spaCy model to use.
       remove_numbers: Remove numbers from the text. Defaults to False.
       remove_punctuation: Remove punctuation from the text. Defaults to True.
-      remove_pos: A list of POS tags to remove. For example, if you want to remove all nouns,
-        you can pass in ['NOUN'].
+      remove_pos: A list of POS tags to remove. For example, if you want to
+          remove all nouns, you can pass in ['NOUN'].
       remove_stopwords: Remove stopwords from the text. Defaults to True.
       remove_email: Remove email addresses from the text. Defaults to True.
       remove_url: Remove URLs from the text. Defaults to True.
       lemmatize: If True, lemmatize the text. Defaults to False.
+
+    Raises:
+        SpacyCleanerMisconfigurationError: When attempting to lemmatize when a
+            "lemmatizer" is not in the model pipeline.
+
+    Examples:
+        nlp = spacy.load("en_core_web_sm")
+
+        cleaner = Cleaner(
+            spacy_model=nlp,
+            lemmatize=True,
+            remove_stopwords=True,
+            remove_numbers=True,
+        )
+        raw_texts = [
+            "Travelling to London with Cellan took 3 hours
+            "I love to go to the beach and see seagulls",
+        ]
+        clean_texts = cleaner.clean(raw_texts)
+        print(clean_texts)
+        ['travel london Cellan take hour', 'love beach seagulls']
     """
 
     def __init__(
@@ -36,13 +74,14 @@ class Cleaner(BaseCleaner):
         remove_email: bool = True,
         remove_url: bool = True,
         lemmatize: bool = False,
-        **kwargs,
     ) -> None:
+        """Initialises a SpaCy Language model for text cleaning."""
         super().__init__(model)
 
         if remove_pos is not None and "tagger" not in model.pipe_names:
             warnings.warn(
-                "A `tagger` is not in your model pipeline. POS tags will not be removed."
+                "A `tagger` is not in your model pipeline. POS tags will not "
+                "be removed."
             )
 
         if lemmatize and "lemmatizer" not in model.pipe_names:
@@ -57,32 +96,34 @@ class Cleaner(BaseCleaner):
         self.remove_email = remove_email
         self.remove_url = remove_url
         self.lemmatize = lemmatize
-        self.kwargs = kwargs
 
-    def clean(self, texts: List[str], *args, **kwargs) -> List[str]:
-        """
-        For each document in the list of documents, clean the document using the model's pipe function
+    def clean(self, texts: List[str], **kwargs) -> List[str]:  # type: ignore
+        """Cleans each text in texts.
+
+        The method `clean` wraps the SpaCy Language model pipe. When cleaning,
+            a progress bar is shown.
 
         Args:
           texts: List of texts to clean.
-          args: Arguments for pipe method: https://spacy.io/api/language#pipe
-          kwargs: Keyword Arguments for pipe method: https://spacy.io/api/language#pipe
+          kwargs: Keyword Arguments for pipe method:
+            https://spacy.io/api/language#pipe
 
         Returns:
-          A list of cleaned documents.
+          A list of cleaned texts.
         """
         return [
             self._clean_doc(doc)
             for doc in tqdm.tqdm(
-                self.model.pipe(texts, *args, **kwargs),
+                self.model.pipe(texts, **kwargs),
                 desc="Cleaning Progress",
                 total=len(texts),
             )
         ]
 
     def _clean_doc(self, doc: Doc) -> str:
-        """
-        If the token is allowed, then append the lemma of the token to the list of tokens.
+        """Cleans a SpaCy Doc.
+
+        If the token is allowed, then append the token to the list of tokens.
 
         Args:
           doc: The document to be cleaned.
@@ -101,7 +142,8 @@ class Cleaner(BaseCleaner):
         return " ".join(tokens).lower()
 
     def _allowed_token(self, tok: Token) -> bool:
-        """
+        """Checks if a token is allowed.
+
         If the token does not meet the conditions then it is allowed.
 
         Args:
