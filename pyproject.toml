@@ -93,7 +93,7 @@ check_untyped_defs = true
 disallow_any_generics = true
 disallow_incomplete_defs = true
 ignore_missing_imports = true
-implicit_reexport = false
+implicit_reexport = true
 no_implicit_optional = true
 show_column_numbers = true
 show_error_codes = true
@@ -133,3 +133,8 @@ exclude_lines = [
   "if __name__ == .__main__.:",
   "pragma: no cover",
 ]
+
+[tool.pydocstyle]
+convention = "google"
+match = '(?!__init__).*\.py'
+match-dir='(?!(tests|migrations)).*'
