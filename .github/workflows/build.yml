@@ -73,4 +73,13 @@ jobs:
         run: poetry run pip install pytest-github-actions-annotate-failures
 
       - name: Run pytest
-        run:  poetry run pytest --cov=spacy_cleaner tests/
+        run: poetry run pytest --cov=spacy_cleaner tests/
+        if: ${{ always() }}
+
+      - name: Run mypy
+        run: poetry run mypy --config-file pyproject.toml spacy_cleaner/
+        if: ${{ always() }}
+
+      - name: Run docstring checker
+        run: poetry run mypy --config-file pyproject.toml spacy_cleaner/
+        if: ${{ always() }}
