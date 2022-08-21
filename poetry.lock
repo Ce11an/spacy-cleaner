@@ -798,6 +798,14 @@ python-versions = ">=3.6"
 wasabi = ">=0.8.1,<1.1.0"
 
 [[package]]
+name = "spacy-lookups-data"
+version = "1.0.3"
+description = "Additional lookup tables and data resources for spaCy"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
 name = "srsly"
 version = "2.4.4"
 description = "Modern high-performance serialization utilities for Python"
@@ -1004,7 +1012,7 @@ docs = ["jaraco.tidelift (>=1.4)", "rst.linker (>=1.9)", "jaraco.packaging (>=9)
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7.2"
-content-hash = "dfc455278d7d6c3f230ac0eb5ae1e1db261e90c565b218b349b68f168a01e24c"
+content-hash = "8b7867bd8f947ad3b6f7ff071fc684b408f6cb32c2491b16e8b5339349b723e1"
 
 [metadata.files]
 astroid = [
@@ -1643,6 +1651,10 @@ spacy-legacy = [
 spacy-loggers = [
     {file = "spacy-loggers-1.0.3.tar.gz", hash = "sha256:00f6fd554db9fd1fde6501b23e1f0e72f6eef14bb1e7fc15456d11d1d2de92ca"},
     {file = "spacy_loggers-1.0.3-py3-none-any.whl", hash = "sha256:f74386b390a023f9615dcb499b7b4ad63338236a8187f0ec4dfe265a9f665ee8"},
+]
+spacy-lookups-data = [
+    {file = "spacy_lookups_data-1.0.3-py2.py3-none-any.whl", hash = "sha256:2f35e52319c3a3112ddd97d9c09c214d877ed1e994f2cf733a0c5861ae98ecb6"},
+    {file = "spacy_lookups_data-1.0.3.tar.gz", hash = "sha256:ab6865548fb866d479090e31108a7e25ed192a11fcb09896e7116328cdc52be1"},
 ]
 srsly = [
     {file = "srsly-2.4.4-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:e0c6510716e5cb2abf11abcbe06338283b01690955342e78a76fcb9953b7e3ba"},
