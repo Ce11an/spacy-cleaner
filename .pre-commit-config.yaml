@@ -34,12 +34,3 @@ repos:
         entry: poetry run black --config pyproject.toml
         types: [python]
         language: system
-
-  - repo: https://github.com/pycqa/pydocstyle
-    rev: 6.1.1
-    hooks:
-      - id: pydocstyle
-        name: pydocstyle
-        entry: poetry run pydocstyle
-        types: [python]
-        language: system

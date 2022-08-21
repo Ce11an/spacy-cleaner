@@ -152,7 +152,7 @@ class Cleaner(BaseCleaner):
         Returns:
           True if the token is allowed and False if it is not allowed.
         """
-        if isinstance(self.remove_pos, List) and tok.pos_:
+        if isinstance(self.remove_pos, List) and tok.pos_ in self.remove_pos:
             return False
         elif self.remove_stopwords and tok.is_stop:
             return False
