@@ -1,1 +1,1 @@
-from spacy_cleaner.cleaner import SpacyCleaner
+from spacy_cleaner.cleaners.cleaner import Cleaner
