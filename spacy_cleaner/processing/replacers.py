@@ -4,7 +4,7 @@ from typing import Union
 
 from spacy.tokens import Token
 
-from spacy_cleaner.processing import evaluators, processor
+from spacy_cleaner.processing import evaluators, transformers
 
 
 def replace_punctuation_token(
@@ -17,11 +17,11 @@ def replace_punctuation_token(
       replace: The replacement string. Defaults to "_IS_PUNCT_".
 
     Returns:
-      A string or a token.
+      The replacement string or the original token.
     """
-    return processor.Processor(
+    return transformers.TokenTransformer(
         evaluators.PunctuationEvaluator(), replace
-    ).process(tok)
+    ).transform(tok)
 
 
 def replace_stopword_token(
@@ -34,14 +34,14 @@ def replace_stopword_token(
       replace: The replacement string. Defaults to "_IS_STOP_".
 
     Returns:
-      A string or a token.
+      The replacement string or the original token.
     """
-    return processor.Processor(
+    return transformers.TokenTransformer(
         evaluators.StopwordsEvaluator(), replace
-    ).process(tok)
+    ).transform(tok)
 
 
-def replace_like_email_token(
+def replace_email_token(
     tok: Token, replace: str = "_LIKE_EMAIL_"
 ) -> Union[str, Token]:
     """If the token is like an email, replace it with the string `_LIKE_EMAIL_`.
@@ -51,8 +51,8 @@ def replace_like_email_token(
       replace: The replacement string. Defaults to "_LIKE_EMAIL_".
 
     Returns:
-      A string or a token.
+      The replacement string or the original token.
     """
-    return processor.Processor(evaluators.EmailEvaluator(), replace).process(
-        tok
-    )
+    return transformers.TokenTransformer(
+        evaluators.EmailEvaluator(), replace
+    ).transform(tok)

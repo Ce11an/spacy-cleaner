@@ -55,6 +55,7 @@ class Cleaner(BaseCleaner):
             remove_stopwords=True,
             remove_numbers=True,
         )
+
         raw_texts = [
             "Travelling to London with Cellan took 3 hours
             "I love to go to the beach and see seagulls",

@@ -1,29 +1,25 @@
-"""Base processing classes."""
+"""Transformer classes."""
 
 from typing import Union
-
-import abc
 
 from spacy.tokens import Token
 
 from spacy_cleaner.base.protocols import Evaluator
 
 
-class BaseProcessor(abc.ABC):
-    """Base processor class.
-
-    Processes a token using the evaluator.
+class TokenTransformer:
+    """Transforms a token using the evaluator.
 
     Attributes:
         evaluator: Evaluates if the token should be processed or not.
+        replace: Replaces token based on the token evaluation.
     """
 
-    def __init__(self, evaluator: Evaluator) -> None:
-        """Initialises class."""
+    def __init__(self, evaluator: Evaluator, replace: str) -> None:
         self.evaluator = evaluator
+        self.replace = replace
 
-    @abc.abstractmethod
-    def process(self, tok: Token) -> Union[str, Token]:
+    def transform(self, tok: Token) -> Union[str, Token]:
         """Processes a token using the evaluator.
 
         Args:
@@ -32,3 +28,4 @@ class BaseProcessor(abc.ABC):
         Returns:
             A string or token depending on evaluation.
         """
+        return self.replace if self.evaluator.evaluate(tok) else tok

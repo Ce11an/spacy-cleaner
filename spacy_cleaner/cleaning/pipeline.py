@@ -25,16 +25,24 @@ class CleanerPipeline(BaseCleaner):
         pipeline: Callable functions that process tokens.
 
     Examples:
-        >>> import spacy
+        import spacy
 
-        >>> model = spacy.blank("en")
-        >>> model.add_pipe("lemmatizer", config={"mode": "lookup"})
-        >>> model.initialize()
+        model = spacy.blank("en")
+        model.add_pipe("lemmatizer", config={"mode": "lookup"})
+        model.initialize()
 
-        >>> texts = ["Hello, my name is Cellan! I love to swim!"]
-        >>> cleaner = CleanerPipeline(model, remove_stopword_token, replace_punctuation_token, mutate_lemma_token)
-        >>> cleaner.clean(texts)
-        >>> ['Hello _IS_PUNCT_ Cellan _IS_PUNCT_ love swim _IS_PUNCT_']
+        texts = ["Hello, my name is Cellan! I love to swim!"]
+
+        cleaner = CleanerPipeline(
+            model,
+            remove_stopword_token,
+            replace_punctuation_token,
+            mutate_lemma_token
+        )
+
+        print(cleaner.clean(texts))
+
+        ['Hello _IS_PUNCT_ Cellan _IS_PUNCT_ love swim _IS_PUNCT_']
     """
 
     def __init__(
