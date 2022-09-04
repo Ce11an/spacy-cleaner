@@ -12,7 +12,7 @@ class TestReplaceMultiWhitespace:
 
 
 class TestTokenPipe:
-    def test_token_pipe(self, model):
+    def test_token_pipe_str(self, model):
         doc = model("swimming")
         tok = doc[0]
         assert (
@@ -22,4 +22,15 @@ class TestTokenPipe:
                 mutate_lemma_token,
             )
             == "swim"
+        )
+
+    def test_token_pipe_tokn(self, model):
+        doc = model("swimming")
+        tok = doc[0]
+        assert (
+            token_pipe(
+                tok,
+                remove_stopword_token,
+            )
+            == "swimming"
         )
