@@ -6,31 +6,12 @@ from spacy_cleaner import Cleaner, exceptions
 
 class TestCleaner:
     @pytest.fixture
-    def texts(self):
-        return [
-            "spacy-cleaner is the first package I have made so I am very "
-            "excited for others to use it :) IF YoU HAve anY IssUes, please "
-            "email: hallcellan@gmail.com - For improvements, make an issue "
-            "here: https://github.com/Ce11an/spacy-cleaner/issues.",
-            "Text cleaning is about to be a whole lot easier!!",
-            "What's your favourite Anime? Demon Slayer is awesome...",
-            "Annie is travelling to London at 9 AM",
-        ]
+    def doc(self, model, texts):
+        return model(texts[0])
 
     @pytest.fixture
-    def nlp(self):
-        nlp = spacy.blank("en")
-        nlp.add_pipe("lemmatizer", config={"mode": "lookup"})
-        nlp.initialize()
-        return nlp
-
-    @pytest.fixture
-    def doc(self, nlp, texts):
-        return nlp(texts[0])
-
-    @pytest.fixture
-    def cleaner(self, nlp):
-        return Cleaner(nlp)
+    def cleaner(self, model):
+        return Cleaner(model)
 
     def test_default_clean(self, cleaner, texts):
         clean_texts = cleaner.clean(texts)
@@ -53,8 +34,8 @@ class TestCleaner:
         allowed = cleaner._allowed_token(tok)
         assert allowed is True
 
-    def test_remove_numbers(self, nlp, texts):
-        cleaner = Cleaner(nlp, remove_numbers=True)
+    def test_remove_numbers(self, model, texts):
+        cleaner = Cleaner(model, remove_numbers=True)
         clean_texts = cleaner.clean(texts)
         assert clean_texts == [
             "spacy cleaner package excited use issues email improvements issue",
@@ -63,8 +44,8 @@ class TestCleaner:
             "annie travelling london",
         ]
 
-    def test_lemmatization(self, nlp, texts):
-        cleaner = Cleaner(nlp, lemmatize=True)
+    def test_lemmatization(self, model, texts):
+        cleaner = Cleaner(model, lemmatize=True)
         clean_texts = cleaner.clean(texts)
         assert clean_texts == [
             "spacy clean package excite use issues email improvement issue",

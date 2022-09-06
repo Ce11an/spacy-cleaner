@@ -25,7 +25,7 @@ from spacy import Language
 from spacy.tokens import Doc, Token
 
 from spacy_cleaner import exceptions
-from spacy_cleaner.cleaners.base_cleaner import BaseCleaner
+from spacy_cleaner.base.base_cleaner import BaseCleaner
 
 
 class Cleaner(BaseCleaner):
@@ -55,6 +55,7 @@ class Cleaner(BaseCleaner):
             remove_stopwords=True,
             remove_numbers=True,
         )
+
         raw_texts = [
             "Travelling to London with Cellan took 3 hours
             "I love to go to the beach and see seagulls",
