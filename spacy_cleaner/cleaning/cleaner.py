@@ -46,23 +46,24 @@ class Cleaner(BaseCleaner):
         SpacyCleanerMisconfigurationError: When attempting to lemmatize when a
             "lemmatizer" is not in the model pipeline.
 
-    Examples:
-        nlp = spacy.load("en_core_web_sm")
+    Example:
+        >>> nlp = spacy.load("en_core_web_sm")
 
-        cleaner = Cleaner(
-            spacy_model=nlp,
-            lemmatize=True,
-            remove_stopwords=True,
-            remove_numbers=True,
-        )
+        >>> cleaner = Cleaner(
+        ... spacy_model=nlp,
+        ... lemmatize=True,
+        ... remove_numbers=True,
+        ... )
 
-        raw_texts = [
-            "Travelling to London with Cellan took 3 hours
-            "I love to go to the beach and see seagulls",
-        ]
-        clean_texts = cleaner.clean(raw_texts)
-        print(clean_texts)
+        >>> raw_texts = [
+        ... "Travelling to London with Cellan took 3 hours",
+        ... "I love to go to the beach and see seagulls",
+        ... ]
+
+        >>> clean_texts = cleaner.clean(raw_texts)
+        >>> print(clean_texts)
         ['travel london Cellan take hour', 'love beach seagulls']
+
     """
 
     def __init__(
