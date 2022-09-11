@@ -47,22 +47,24 @@ class Cleaner(BaseCleaner):
             "lemmatizer" is not in the model pipeline.
 
     Example:
-        >>> nlp = spacy.load("en_core_web_sm")
+        ```python
+        nlp = spacy.load("en_core_web_sm")
 
-        >>> cleaner = Cleaner(
-        ... spacy_model=nlp,
-        ... lemmatize=True,
-        ... remove_numbers=True,
-        ... )
+        cleaner = Cleaner(
+        spacy_model=nlp,
+        lemmatize=True,
+        remove_numbers=True,
+        )
 
-        >>> raw_texts = [
-        ... "Travelling to London with Cellan took 3 hours",
-        ... "I love to go to the beach and see seagulls",
-        ... ]
+        raw_texts = [
+        "Travelling to London with Cellan took 3 hours",
+        "I love to go to the beach and see seagulls",
+        ]
 
-        >>> clean_texts = cleaner.clean(raw_texts)
-        >>> print(clean_texts)
+        clean_texts = cleaner.clean(raw_texts)
+        print(clean_texts)
         ['travel london Cellan take hour', 'love beach seagulls']
+        ```
 
     """
 
@@ -77,7 +79,6 @@ class Cleaner(BaseCleaner):
         remove_url: bool = True,
         lemmatize: bool = False,
     ) -> None:
-        """Initialises a SpaCy Language model for text cleaning."""
         super().__init__(model)
 
         if remove_pos is not None and "tagger" not in model.pipe_names:
@@ -112,6 +113,7 @@ class Cleaner(BaseCleaner):
 
         Returns:
           A list of cleaned texts.
+
         """
         return [
             self._clean_doc(doc)
