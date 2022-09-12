@@ -17,33 +17,33 @@ from spacy_cleaner.processing import (
 )
 
 
-class CleanerPipeline(BaseCleaner):
+class Pipeline(BaseCleaner):
     """Cleans a sequence of texts.
 
     Attributes:
         model: spaCy model.
         pipeline: Callable functions that process tokens.
 
-    Examples:
-       >>> import spacy
+    Example:
+        ```python
+        import spacy
 
-       >>> model = spacy.blank("en")
-       >>> model.add_pipe("lemmatizer", config={"mode": "lookup"})
-       >>> model.initialize()
+        model = spacy.blank("en")
+        model.add_pipe("lemmatizer", config={"mode": "lookup"})
+        model.initialize()
 
-       >>> texts = ["Hello, my name is Cellan! I love to swim!"]
+        texts = ["Hello, my name is Cellan! I love to swim!"]
 
-       >>> cleaner = CleanerPipeline(
-       ... model,
-       ... remove_stopword_token,
-       ... replace_punctuation_token,
-       ... mutate_lemma_token
-       ...)
-
-       >>> cleaner.clean(texts)
+        cleaner = Pipeline(
+            model,
+            remove_stopword_token,
+            replace_punctuation_token,
+            mutate_lemma_token,
+        )
+        cleaner.clean(texts)
         ['Hello _IS_PUNCT_ Cellan _IS_PUNCT_ love swim _IS_PUNCT_']
+        ```
     """
-
     def __init__(
         self, model: Language, *pipeline: Callable[[Token], Union[str, Token]]
     ) -> None:
