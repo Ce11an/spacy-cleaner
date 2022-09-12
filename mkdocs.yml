@@ -65,9 +65,9 @@ theme:
 plugins:
   - search
   - mkdocstrings
-  - git-committers:
-      repository: Ce11an/spacy-cleaner
-  - git-authors
+#  - git-committers:
+#      repository: Ce11an/spacy-cleaner
+#  - git-authors
 
 # Extensions
 markdown_extensions:
@@ -118,4 +118,7 @@ nav:
       - Cleaning:
         - cleaner: reference/cleaning/cleaner.md
         - pipeline: reference/cleaning/pipeline.md
+      - Processing:
+        - evaluators: reference/processing/evaluators.md
+  - Help: help.md
 #      - processing: reference/processing.md

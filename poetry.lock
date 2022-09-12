@@ -75,6 +75,21 @@ toml = ["toml"]
 yaml = ["pyyaml"]
 
 [[package]]
+name = "beautifulsoup4"
+version = "4.11.1"
+description = "Screen-scraping library"
+category = "dev"
+optional = false
+python-versions = ">=3.6.0"
+
+[package.dependencies]
+soupsieve = ">1.2"
+
+[package.extras]
+html5lib = ["html5lib"]
+lxml = ["lxml"]
+
+[[package]]
 name = "black"
 version = "22.8.0"
 description = "The uncompromising code formatter."
@@ -283,6 +298,17 @@ python-versions = ">=3.7"
 gitdb = ">=4.0.1,<5"
 
 [[package]]
+name = "griffe"
+version = "0.22.0"
+description = "Signatures for entire Python programs. Extract the structure, the frame, the skeleton of your project, to generate API documentation or find breaking changes in your API."
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+async = ["aiofiles (>=0.7,<1.0)"]
+
+[[package]]
 name = "identify"
 version = "2.5.3"
 description = "File identification library for Python"
@@ -445,6 +471,43 @@ watchdog = ">=2.0"
 i18n = ["babel (>=2.9.0)"]
 
 [[package]]
+name = "mkdocs-autorefs"
+version = "0.4.1"
+description = "Automatically link across pages in MkDocs."
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+Markdown = ">=3.3"
+mkdocs = ">=1.1"
+
+[[package]]
+name = "mkdocs-git-authors-plugin"
+version = "0.6.4"
+description = "Mkdocs plugin to display git authors of a page"
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+mkdocs = ">=1.0"
+
+[[package]]
+name = "mkdocs-git-committers-plugin-2"
+version = "1.1.0"
+description = "An MkDocs plugin to create a list of contributors on the page"
+category = "dev"
+optional = false
+python-versions = ">=2.7"
+
+[package.dependencies]
+beautifulsoup4 = "*"
+gitpython = "*"
+mkdocs = ">=1.0.3"
+requests = "*"
+
+[[package]]
 name = "mkdocs-material"
 version = "8.4.3"
 description = "Documentation that simply works"
@@ -467,6 +530,40 @@ description = "Extension pack for Python Markdown."
 category = "dev"
 optional = false
 python-versions = ">=3.6"
+
+[[package]]
+name = "mkdocstrings"
+version = "0.19.0"
+description = "Automatic documentation from sources, for MkDocs."
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+Jinja2 = ">=2.11.1"
+Markdown = ">=3.3"
+MarkupSafe = ">=1.1"
+mkdocs = ">=1.2"
+mkdocs-autorefs = ">=0.3.1"
+mkdocstrings-python = {version = ">=0.5.2", optional = true, markers = "extra == \"python\""}
+pymdown-extensions = ">=6.3"
+
+[package.extras]
+crystal = ["mkdocstrings-crystal (>=0.3.4)"]
+python = ["mkdocstrings-python (>=0.5.2)"]
+python-legacy = ["mkdocstrings-python-legacy (>=0.2.1)"]
+
+[[package]]
+name = "mkdocstrings-python"
+version = "0.7.1"
+description = "A Python handler for mkdocstrings."
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+griffe = ">=0.11.1"
+mkdocstrings = ">=0.19"
 
 [[package]]
 name = "murmurhash"
@@ -889,6 +986,14 @@ description = "This package provides 29 stemmers for 28 languages generated from
 category = "dev"
 optional = false
 python-versions = "*"
+
+[[package]]
+name = "soupsieve"
+version = "2.3.2.post1"
+description = "A modern CSS selector implementation for Beautiful Soup."
+category = "dev"
+optional = false
+python-versions = ">=3.6"
 
 [[package]]
 name = "spacy"
@@ -1319,7 +1424,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "a6f035869d97f9d5651bc99846ac0ab55a11b813c178a896810007cde595a1eb"
+content-hash = "c8a54c0c273471b1ef933c6668b1a78e4afc86c1efd881341bff67fe16813b19"
 
 [metadata.files]
 alabaster = []
@@ -1328,6 +1433,7 @@ atomicwrites = []
 attrs = []
 babel = []
 bandit = []
+beautifulsoup4 = []
 black = []
 blis = []
 catalogue = []
@@ -1347,6 +1453,7 @@ filelock = []
 ghp-import = []
 gitdb = []
 gitpython = []
+griffe = []
 identify = []
 idna = []
 imagesize = []
@@ -1361,8 +1468,13 @@ markupsafe = []
 mccabe = []
 mergedeep = []
 mkdocs = []
+mkdocs-autorefs = []
+mkdocs-git-authors-plugin = []
+mkdocs-git-committers-plugin-2 = []
 mkdocs-material = []
 mkdocs-material-extensions = []
+mkdocstrings = []
+mkdocstrings-python = []
 murmurhash = []
 mypy = []
 mypy-extensions = []
@@ -1398,6 +1510,7 @@ six = []
 smart-open = []
 smmap = []
 snowballstemmer = []
+soupsieve = []
 spacy = []
 spacy-legacy = []
 spacy-loggers = []

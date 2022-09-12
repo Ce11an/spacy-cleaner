@@ -1,10 +1,10 @@
 
 # Getting started
 
-You can install spacy-cleaner with [`pip`][pip] or using [`poetry`][poetry].
+You can install spacy-cleaner with [`pip`][pip-link] or using [`poetry`][poetry-link].
 
-  [pip]: #with-pip
-  [poetry]: #with-poetry
+  [pip-link]: #with-pip
+  [poetry-link]: #with-poetry
 
 ## Installation
 
@@ -41,6 +41,9 @@ This will automatically install compatible versions of all dependencies:
   [spaCy]: https://spacy.io/
   [spaCy Lookups]: https://github.com/explosion/spacy-lookups-data
   [tqdm]: https://tqdm.github.io/
+
+### with Poetry { #with-poetry data-toc-label="with poetry" }
+
 
 You can install spacy-cleaner using [Poetry]:
 

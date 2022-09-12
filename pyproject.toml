@@ -51,6 +51,9 @@ sphinx-rtd-theme = "~=1.0.0"
 sphinx-rtd-dark-mode = "~=1.2.4"
 sphinx-github-changelog = "^1.2.0"
 mkdocs-material = "^8.4.3"
+mkdocstrings = {extras = ["python"], version = "^0.19.0"}
+mkdocs-git-committers-plugin-2 = "^1.1.0"
+mkdocs-git-authors-plugin = "^0.6.4"
 
 [tool.black]
 # https://github.com/psf/black

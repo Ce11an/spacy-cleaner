@@ -10,10 +10,12 @@ Functionality:
     - Lemmatization.
 
 Typical usage example:
+    ```python
     texts = ["I won £1000"]
     nlp = spacy.load("en_core_web_sm")
     cleaner = Cleaner(nlp, remove_numbers=True)
     clean_texts = cleaner.clean(texts, disable=["ner"])
+    ```
 """
 
 from typing import List, Optional
@@ -51,18 +53,17 @@ class Cleaner(BaseCleaner):
         nlp = spacy.load("en_core_web_sm")
 
         cleaner = Cleaner(
-        spacy_model=nlp,
-        lemmatize=True,
-        remove_numbers=True,
+            spacy_model=nlp,
+            lemmatize=True,
+            remove_numbers=True,
         )
 
         raw_texts = [
-        "Travelling to London with Cellan took 3 hours",
-        "I love to go to the beach and see seagulls",
+            "Travelling to London with Cellan took 3 hours",
+            "I love to go to the beach and see seagulls",
         ]
 
-        clean_texts = cleaner.clean(raw_texts)
-        print(clean_texts)
+        cleaner.clean(raw_texts)
         ['travel london Cellan take hour', 'love beach seagulls']
         ```
 

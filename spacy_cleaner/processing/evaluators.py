@@ -1,4 +1,20 @@
-"""SpaCy token evaluators."""
+"""Evaluate `spaCy` tokens.
+
+This module contains classes that assist with evaluating `spaCy` tokens.
+
+A typical usage example:
+    ```python
+    import spacy
+
+    nlp = spacy.load("en_core_web_md")
+    doc = nlp("and")
+    tok = doc[0]
+
+    evaluator = StopwordsEvaluator()
+    evaluator.evaluate(tok)
+    ```
+    Calling evaluate returns `True` as `and` is a stopword.
+"""
 
 from spacy.tokens import Token
 
@@ -15,7 +31,7 @@ class StopwordsEvaluator(Evaluator):
             tok: The token to evaluate.
 
         Returns:
-            True if the token is a stopword. False if not.
+            `True` if the token is a stopword. `False` if not.
         """
         return tok.is_stop
 
@@ -30,7 +46,7 @@ class EmailEvaluator(Evaluator):
             tok: The token to evaluate.
 
         Returns:
-            True if the token is a stopword. False if not.
+            `True` if the token is a stopword. `False` if not.
         """
         return tok.like_email
 
@@ -45,6 +61,6 @@ class PunctuationEvaluator(Evaluator):
             tok: The token to evaluate.
 
         Returns:
-            True if the token is a stopword. False if not.
+            `True` if the token is a stopword. `False` if not.
         """
         return tok.is_punct

@@ -1,1 +1,1 @@
-::: spacy_cleaner.cleaning.pipeline.CleanerPipeline
+::: spacy_cleaner.cleaning.pipeline

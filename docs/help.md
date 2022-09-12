@@ -1,6 +1,4 @@
-# Help spacy-cleaner
-
-# Help FastAPI - Get Help
+# Help
 
 Do you like **spacy-cleaner**?
 
@@ -42,7 +40,7 @@ You can:
 
 ## Create a Pull Request
 
-You can [contribute](contributing.md) to the source code with Pull Requests, for example:
+You can [contribute](contributing.md) to the source code with Pull Requests.
 
   
 Thanks! 🚀

@@ -1,1 +1,1 @@
-::: spacy_cleaner.cleaning.cleaner.Cleaner
+::: spacy_cleaner.cleaning.cleaner
