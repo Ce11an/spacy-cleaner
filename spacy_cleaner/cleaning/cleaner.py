@@ -1,4 +1,4 @@
-"""class `Cleaner` allows for configurable cleaning of text using spaCy.
+"""class `Cleaner` allows for configurable cleaning of text using `spaCy`.
 
 Functionality:
     - Remove numbers.
@@ -33,20 +33,20 @@ from spacy_cleaner.utils import exceptions
 class Cleaner(BaseCleaner):
     """Cleans text using SpaCy!
 
-    Attributes:
-      model: The spaCy model to use.
-      remove_numbers: Remove numbers from the text. Defaults to False.
-      remove_punctuation: Remove punctuation from the text. Defaults to True.
+    Args:
+      model: The `spaCy` model to use.
+      remove_numbers: Remove numbers from the text.
+      remove_punctuation: Remove punctuation from the text.
       remove_pos: A list of POS tags to remove. For example, if you want to
-          remove all nouns, you can pass in ['NOUN'].
-      remove_stopwords: Remove stopwords from the text. Defaults to True.
-      remove_email: Remove email addresses from the text. Defaults to True.
-      remove_url: Remove URLs from the text. Defaults to True.
-      lemmatize: If True, lemmatize the text. Defaults to False.
+          remove all nouns, you can pass in `['NOUN']`.
+      remove_stopwords: Remove stopwords from the text.
+      remove_email: Remove email addresses from the text.
+      remove_url: Remove URLs from the text.
+      lemmatize: If True, lemmatize the text.
 
     Raises:
         SpacyCleanerMisconfigurationError: When attempting to lemmatize when a
-            "lemmatizer" is not in the model pipeline.
+            `lemmatizer` is not in the model pipeline.
 
     Example:
         ```python
@@ -64,9 +64,7 @@ class Cleaner(BaseCleaner):
         ]
 
         cleaner.clean(raw_texts)
-        ['travel london Cellan take hour', 'love beach seagulls']
         ```
-
     """
 
     def __init__(
@@ -104,12 +102,12 @@ class Cleaner(BaseCleaner):
     def clean(self, texts: List[str], **kwargs) -> List[str]:  # type: ignore
         """Cleans each text in texts.
 
-        The method `clean` wraps the SpaCy Language model pipe. When cleaning,
-            a progress bar is shown.
+        The method `clean` wraps the `spaCy` `Language` model pipe. When
+            cleaning, a progress bar is shown.
 
         Args:
           texts: List of texts to clean.
-          kwargs: Keyword Arguments for pipe method:
+          **kwargs: Keyword Arguments for pipe method:
             https://spacy.io/api/language#pipe
 
         Returns:
@@ -126,7 +124,7 @@ class Cleaner(BaseCleaner):
         ]
 
     def _clean_doc(self, doc: Doc) -> str:
-        """Cleans a SpaCy Doc.
+        """Cleans a `spaCy` document.
 
         If the token is allowed, then append the token to the list of tokens.
 
@@ -152,7 +150,7 @@ class Cleaner(BaseCleaner):
         If the token does not meet the conditions then it is allowed.
 
         Args:
-          tok: A SpaCy token.
+          tok: A `spaCy` token.
 
         Returns:
           True if the token is allowed and False if it is not allowed.

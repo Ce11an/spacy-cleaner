@@ -1,4 +1,4 @@
-"""Cleaner pipeline."""
+"""Class `Pipeline` allows for configurable cleaning of text using `spaCy`."""
 
 import typing
 from typing import Any, Callable, Dict, Iterable, List, Optional, Tuple, Union
@@ -10,19 +10,15 @@ from spacy.util import SimpleFrozenList
 
 from spacy_cleaner import processing
 from spacy_cleaner.base.base_cleaner import BaseCleaner, _AnyContext
-from spacy_cleaner.processing import (
-    mutate_lemma_token,
-    remove_stopword_token,
-    replace_punctuation_token,
-)
 
 
+# noinspection PydanticTypeChecker
 class Pipeline(BaseCleaner):
     """Cleans a sequence of texts.
 
-    Attributes:
-        model: spaCy model.
-        pipeline: Callable functions that process tokens.
+    Args:
+        model: A `spaCy` model.
+        *processors: Callable token processors.
 
     Example:
         ```python
@@ -34,21 +30,22 @@ class Pipeline(BaseCleaner):
 
         texts = ["Hello, my name is Cellan! I love to swim!"]
 
-        cleaner = Pipeline(
+        pipline = Pipeline(
             model,
             remove_stopword_token,
             replace_punctuation_token,
             mutate_lemma_token,
         )
-        cleaner.clean(texts)
+        pipline.clean(texts)
         ['Hello _IS_PUNCT_ Cellan _IS_PUNCT_ love swim _IS_PUNCT_']
         ```
     """
+
     def __init__(
-        self, model: Language, *pipeline: Callable[[Token], Union[str, Token]]
+        self, model: Language, *processors: Callable[[Token], Union[str, Token]]
     ) -> None:
         super().__init__(model)
-        self.pipeline = pipeline
+        self.processors = processors
 
     # noinspection PyTypeChecker,PyDefaultArgument
     @typing.no_type_check
@@ -69,12 +66,15 @@ class Pipeline(BaseCleaner):
 
         Args:
             texts: A sequence of texts or docs to process.
-            as_tuples: If set to True, inputs should be a sequence of (text, context) tuples. Output will then be a
-                sequence of (doc, context) tuples. Defaults to False.
-            batch_size (Optional[int]): The number of texts to buffer.
+            as_tuples: If set to True, inputs should be a sequence of
+                (text, context) tuples. Output will then be a sequence of
+                (doc, context) tuples.
+            batch_size: The number of texts to buffer.
             disable: The pipeline components to disable.
-            component_cfg: An optional dictionary with extra keyword arguments for specific components.
-            n_process: Number of processors to process texts. If -1, set `multiprocessing.cpu_count()`.
+            component_cfg: An optional dictionary with extra keyword arguments
+                for specific components.
+            n_process: Number of processors to process texts. If `-1`, set
+                `multiprocessing.cpu_count()`.
 
         Returns:
               A list of cleaned strings in the order of the original text.
@@ -82,7 +82,7 @@ class Pipeline(BaseCleaner):
         DOCS: https://spacy.io/api/language#pipe
         """
         return [
-            processing.clean_doc(doc, *self.pipeline)
+            processing.clean_doc(doc, *self.processors)
             for doc in self.model.pipe(
                 texts,
                 as_tuples=as_tuples,
