@@ -1,4 +1,19 @@
-"""Module containing functions that replace spaCy tokens with strings."""
+"""Replace `spaCy` tokens.
+
+This module contains functions that assist with replace `spaCy` tokens.
+
+A typical usage example:
+    ```python
+    import spacy
+
+    nlp = spacy.load("en_core_web_md")
+    doc = nlp(",")
+    tok = doc[0]
+
+    replace_punctuation_token(tok)
+    ```
+    `,` is replaced with `_IS_PUNCT_`.
+"""
 
 from typing import Union
 
@@ -14,7 +29,7 @@ def replace_punctuation_token(
 
     Args:
       tok: A spaCy Token.
-      replace: The replacement string. Defaults to "_IS_PUNCT_".
+      replace: The replacement string.
 
     Returns:
       The replacement string or the original token.
@@ -31,7 +46,7 @@ def replace_stopword_token(
 
     Args:
       tok: A spaCy Token.
-      replace: The replacement string. Defaults to "_IS_STOP_".
+      replace: The replacement string.
 
     Returns:
       The replacement string or the original token.
@@ -48,7 +63,7 @@ def replace_email_token(
 
     Args:
       tok: A spaCy Token.
-      replace: The replacement string. Defaults to "_LIKE_EMAIL_".
+      replace: The replacement string.
 
     Returns:
       The replacement string or the original token.

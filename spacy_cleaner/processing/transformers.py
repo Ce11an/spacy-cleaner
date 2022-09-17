@@ -1,4 +1,6 @@
-"""Transformer classes."""
+"""Class `TokenTransformer` allows for configurable cleaning of text using
+    spaCy.
+"""
 
 from typing import Union
 
@@ -10,9 +12,17 @@ from spacy_cleaner.base.protocols import Evaluator
 class TokenTransformer:
     """Transforms a token using the evaluator.
 
-    Attributes:
+    Args:
         evaluator: Evaluates if the token should be processed or not.
         replace: Replaces token based on the token evaluation.
+
+    Example:
+        ```python
+        from spacy_cleaner.processing.evaluators import StopwordsEvaluator
+
+        transformer = TokenTransformer(StopwordsEvaluator(), replace="")
+        transformer.transform(tok)
+        ```
     """
 
     def __init__(self, evaluator: Evaluator, replace: str) -> None:

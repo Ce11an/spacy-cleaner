@@ -19,6 +19,16 @@ Easily clean text with spaCy!
 
 </div>
 
+## Key Features
+
+**spacy-cleaner** utilises `spaCy` `Language` models to replace, remove, and 
+  mutate `spaCy` tokens. Cleaning actions available are:
+* Remove/replace stopwords.
+* Remove/replace punctuation.
+* Remove/replace emails.
+* Remove/replace URLs.
+* Perform lemmatisation.
+
 ## Installation
 
 ```bash
@@ -29,6 +39,54 @@ or install with `Poetry`
 
 ```bash
 poetry add spacy-cleaner
+```
+
+## Example
+
+**spacy-cleaner** can clean text written in any language `spaCy` has a model 
+  for:
+```python
+import spacy
+import spacy_cleaner
+from spacy_cleaner.processing import removers, replacers, mutators
+
+model = spacy.load("en_core_web_sm")
+```
+
+Class `Pipeline` allows for configurable cleaning of text using `spaCy`. The 
+  `Pipeline` is initialised with a model and functions that transform `spaCy` 
+  tokens:
+
+```python
+pipeline = spacy_cleaner.Pipeline(
+    model,
+    removers.remove_stopword_token,
+    replace.replace_punctuation_token,
+    mutators.mutate_lemma_token,
+)
+```
+
+Next the `pipeline` can be called with the method `clean` to clean a list of 
+  texts:
+```python
+texts = ["Hello, my name is Cellan! I love to swim!"]
+
+pipeline.clean(texts)
+```
+
+<details markdown="1">
+<summary>About the method <code>clean</code>...</summary>
+
+The method `clean` is a wrapper around the `spaCy` `Language` class method 
+  `pipe`. Check the docs for more information:
+
+https://spacy.io/api/language#pipe
+
+</details>
+
+Giving the output:
+```python
+['Hello _IS_PUNCT_ Cellan _IS_PUNCT_ love swim _IS_PUNCT_']
 ```
 
 ### Makefile usage
