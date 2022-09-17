@@ -26,8 +26,8 @@ import tqdm
 from spacy import Language
 from spacy.tokens import Doc, Token
 
-from spacy_cleaner import exceptions
 from spacy_cleaner.base.base_cleaner import BaseCleaner
+from spacy_cleaner.utils import exceptions
 
 
 class Cleaner(BaseCleaner):
