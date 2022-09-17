@@ -10,10 +10,12 @@ Functionality:
     - Lemmatization.
 
 Typical usage example:
+    ```python
     texts = ["I won £1000"]
     nlp = spacy.load("en_core_web_sm")
     cleaner = Cleaner(nlp, remove_numbers=True)
     clean_texts = cleaner.clean(texts, disable=["ner"])
+    ```
 """
 
 from typing import List, Optional
@@ -46,23 +48,25 @@ class Cleaner(BaseCleaner):
         SpacyCleanerMisconfigurationError: When attempting to lemmatize when a
             "lemmatizer" is not in the model pipeline.
 
-    Examples:
+    Example:
+        ```python
         nlp = spacy.load("en_core_web_sm")
 
         cleaner = Cleaner(
             spacy_model=nlp,
             lemmatize=True,
-            remove_stopwords=True,
             remove_numbers=True,
         )
 
         raw_texts = [
-            "Travelling to London with Cellan took 3 hours
+            "Travelling to London with Cellan took 3 hours",
             "I love to go to the beach and see seagulls",
         ]
-        clean_texts = cleaner.clean(raw_texts)
-        print(clean_texts)
+
+        cleaner.clean(raw_texts)
         ['travel london Cellan take hour', 'love beach seagulls']
+        ```
+
     """
 
     def __init__(
@@ -76,7 +80,6 @@ class Cleaner(BaseCleaner):
         remove_url: bool = True,
         lemmatize: bool = False,
     ) -> None:
-        """Initialises a SpaCy Language model for text cleaning."""
         super().__init__(model)
 
         if remove_pos is not None and "tagger" not in model.pipe_names:
@@ -111,6 +114,7 @@ class Cleaner(BaseCleaner):
 
         Returns:
           A list of cleaned texts.
+
         """
         return [
             self._clean_doc(doc)

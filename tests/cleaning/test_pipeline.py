@@ -1,9 +1,9 @@
-from spacy_cleaner import CleanerPipeline, processing
+from spacy_cleaner import Pipeline, processing
 
 
 class TestCleanerPipeline:
     def test_clean(self, model, texts):
-        cleaner = CleanerPipeline(
+        cleaner = Pipeline(
             model,
             processing.remove_stopword_token,
             processing.replace_punctuation_token,
