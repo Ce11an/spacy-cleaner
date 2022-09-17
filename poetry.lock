@@ -1163,7 +1163,7 @@ testing = ["func-timeout", "jaraco.itertools", "pytest (>=6)", "pytest-black (>=
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "0b2eea5783e14bd718cb5ce08bd7371fd899931bd88190a0dbb1e12f2cc99919"
+content-hash = "48c95a7fb8f6037bf8dcff83089f39b1e65fe4cef364aff1c1e012c20096cb84"
 
 [metadata.files]
 astroid = [
