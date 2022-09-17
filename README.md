@@ -163,24 +163,6 @@ Update all dev libraries to the latest version using one command
 make update-dev-deps
 ```
 
-<details>
-<summary>4. Code security</summary>
-<p>
-
-```bash
-make check-safety
-```
-
-This command launches `Poetry` integrity checks as well as identifies security issues with `Safety` and `Bandit`.
-
-```bash
-make check-safety
-```
-
-</details>
-<p>
-
-</p>
 </details>
 
 <details>
@@ -222,7 +204,7 @@ make lint
 the same as:
 
 ```bash
-make test && make check-codestyle && make mypy && make check-safety
+make test && make check-codestyle && make mypy
 ```
 
 </p>
