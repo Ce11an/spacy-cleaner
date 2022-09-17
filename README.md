@@ -2,6 +2,8 @@
 
 <div align="center">
 
+![spacy-cleaner](docs/assets/images/spacemen.png)
+
 [![Built with spaCy](https://img.shields.io/badge/built%20with-spaCy-09a3d5.svg)](https://spacy.io)
 [![Build status](https://github.com/Ce11an/spacy-cleaner/workflows/build/badge.svg?branch=main&event=push)](https://github.com/Ce11an/spacy-cleaner/actions?query=workflow%3Abuild)
 [![Python Version](https://img.shields.io/pypi/pyversions/spacy-cleaner.svg)](https://pypi.org/project/spacy-cleaner/)
@@ -23,11 +25,14 @@ Easily clean text with spaCy!
 
 **spacy-cleaner** utilises `spaCy` `Language` models to replace, remove, and 
   mutate `spaCy` tokens. Cleaning actions available are:
+
 * Remove/replace stopwords.
 * Remove/replace punctuation.
 * Remove/replace emails.
 * Remove/replace URLs.
 * Perform lemmatisation.
+
+See our [docs](https://ce11an.github.io/spacy-cleaner/) for more information.
 
 ## Installation
 
