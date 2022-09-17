@@ -1,7 +1,8 @@
 import pytest
 import spacy
 
-from spacy_cleaner import Cleaner, exceptions
+from spacy_cleaner import Cleaner
+from spacy_cleaner.utils import exceptions
 
 
 class TestCleaner:

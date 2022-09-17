@@ -1,4 +1,19 @@
-"""Module containing functions that remove spaCy tokens from strings."""
+"""Remove `spaCy` tokens.
+
+This module contains functions that assist with removing `spaCy` tokens.
+
+A typical usage example:
+    ```python
+    import spacy
+
+    nlp = spacy.load("en_core_web_md")
+    doc = nlp("and")
+    tok = doc[0]
+
+    remove_stopword_token(tok)
+    ```
+    `and` is a stopword so an empty string is returned.
+"""
 
 from typing import Union
 

@@ -13,7 +13,7 @@ def replace_multi_whitespace(s: str, replace: str = " ") -> str:
 
     Args:
       s: The string to be replaced.
-      replace: The replacement string. Defaults to " "
+      replace: The replacement string.
 
     Returns:
       A string with all the whitespace replaced with a single space.
@@ -22,32 +22,37 @@ def replace_multi_whitespace(s: str, replace: str = " ") -> str:
 
 
 @typing.no_type_check
-def token_pipe(tok: Token, *funcs: Callable[[Token], Union[str, Token]]) -> str:
+def token_pipe(
+    tok: Token, *processors: Callable[[Token], Union[str, Token]]
+) -> str:
     """It takes a token, and applies a series of functions to it, until one of
         the functions returns a string.
 
     Args:
-        tok: the token to be transformed,
+        tok: The token to be transformed,
+        *processors: Callable token processors.
 
     Returns:
         A string.
     """
-    for func in funcs:
-        tok = func(tok)
+    for processor in processors:
+        tok = processor(tok)
         if isinstance(tok, str):
             return str(tok)
     return str(tok)
 
 
-def clean_doc(doc: Doc, *pipeline: Callable[[Token], Union[str, Token]]) -> str:
+def clean_doc(
+    doc: Doc, *processors: Callable[[Token], Union[str, Token]]
+) -> str:
     """Cleans a spaCy document and returns a cleaned string.
 
     Args:
         doc: spaCy Doc to be cleaned.
-        pipeline: Callable functions that process tokens.
+        *processors: Callable token processors.
 
     Returns:
         A string of the cleaned text.
     """
-    s = " ".join([token_pipe(tok, *pipeline) for tok in doc])
+    s = " ".join([token_pipe(tok, *processors) for tok in doc])
     return replace_multi_whitespace(s)

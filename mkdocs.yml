@@ -114,5 +114,11 @@ nav:
         - pipeline: reference/cleaning/pipeline.md
       - Processing:
         - evaluators: reference/processing/evaluators.md
+        - transformers: reference/processing/transformers.md
+        - removers: reference/processing/removers.md
+        - replacers: reference/processing/replacers.md
+        - mutators: reference/processing/mutators.md
+        - helpers: reference/processing/helpers.md
+      - Utilities:
+        - exceptions: reference/utils/exceptions.md
   - Help: help.md
-#      - processing: reference/processing.md
