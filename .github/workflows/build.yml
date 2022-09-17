@@ -77,7 +77,7 @@ jobs:
         if: ${{ always() }}
 
       - name: Run mypy
-        run: poetry run mypy --no-strict-optional --config-file pyproject.toml spacy_cleaner/
+        run: poetry run mypy --config-file pyproject.toml spacy_cleaner/
         if: ${{ always() }}
 
       - name: Run docstring checker
