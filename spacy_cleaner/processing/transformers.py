@@ -1,6 +1,4 @@
-"""Class `TokenTransformer` allows for configurable cleaning of text using
-    spaCy.
-"""
+"""Class `TokenTransformer` allows for transformation of `spaCy` tokens."""
 
 from typing import Union
 

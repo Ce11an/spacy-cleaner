@@ -140,5 +140,6 @@ exclude_lines = [
 
 [tool.pydocstyle]
 convention = "google"
+add-ignore = "D301,D212,D107"
 match = '(?!__init__).*\.py'
-match-dir='(?!(tests|migrations)).*'
+match-dir='(?!(tests)).*'
