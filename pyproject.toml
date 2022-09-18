@@ -44,12 +44,7 @@ pre-commit = "~=2.20.0"
 pydocstyle = "~=6.1.1"
 pylint = "~=2.15.0"
 pyupgrade = "~=2.37.3"
-safety = "~=2.1.1"
 pytest-cov = "~=3.0.0"
-sphinx = "~=5.0.2"
-sphinx-rtd-theme = "~=1.0.0"
-sphinx-rtd-dark-mode = "~=1.2.4"
-sphinx-github-changelog = "^1.2.0"
 mkdocs-material = "^8.4.3"
 mkdocstrings = {extras = ["python"], version = "^0.19.0"}
 
