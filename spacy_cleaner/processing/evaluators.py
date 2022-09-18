@@ -36,6 +36,21 @@ class StopwordsEvaluator(Evaluator):
         return tok.is_stop
 
 
+class PunctuationEvaluator(Evaluator):
+    """Evaluates emails."""
+
+    def evaluate(self, tok: Token) -> bool:
+        """If the given token is like an email.
+
+        Args:
+            tok: The token to evaluate.
+
+        Returns:
+            `True` if the token is a stopword. `False` if not.
+        """
+        return tok.is_punct
+
+
 class EmailEvaluator(Evaluator):
     """Evaluates emails."""
 
@@ -51,16 +66,16 @@ class EmailEvaluator(Evaluator):
         return tok.like_email
 
 
-class PunctuationEvaluator(Evaluator):
-    """Evaluates emails."""
+class URLEvaluator(Evaluator):
+    """Evaluates URLs."""
 
     def evaluate(self, tok: Token) -> bool:
-        """If the given token is like an email.
+        """If the given token is like a URL.
 
         Args:
             tok: The token to evaluate.
 
         Returns:
-            `True` if the token is a stopword. `False` if not.
+            `True` if the token is a URL. `False` if not.
         """
-        return tok.is_punct
+        return tok.like_url
