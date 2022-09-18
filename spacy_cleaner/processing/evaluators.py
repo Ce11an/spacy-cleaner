@@ -46,7 +46,7 @@ class PunctuationEvaluator(Evaluator):
             tok: The token to evaluate.
 
         Returns:
-            `True` if the token is a stopword. `False` if not.
+            `True` if the token is punctuation. `False` if not.
         """
         return tok.is_punct
 
@@ -61,7 +61,7 @@ class EmailEvaluator(Evaluator):
             tok: The token to evaluate.
 
         Returns:
-            `True` if the token is a stopword. `False` if not.
+            `True` if the token is like an email. `False` if not.
         """
         return tok.like_email
 
@@ -76,6 +76,6 @@ class URLEvaluator(Evaluator):
             tok: The token to evaluate.
 
         Returns:
-            `True` if the token is a URL. `False` if not.
+            `True` if the token is like a URL. `False` if not.
         """
         return tok.like_url
