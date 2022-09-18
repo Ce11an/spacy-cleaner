@@ -43,7 +43,7 @@ class TestReplaceEmailToken:
 
 
 class TestReplaceURLToken:
-    def test_replace_url_token_is_email(self, model):
+    def test_replace_url_token_is_url(self, model):
         doc = model("www.google.com")
         tok = doc[0]
         assert replace_url_token(tok) == "_LIKE_URL_"
