@@ -98,7 +98,7 @@ show_column_numbers = true
 show_error_codes = true
 show_error_context = true
 strict_equality = true
-strict_optional = true
+strict_optional = false
 warn_no_return = true
 warn_redundant_casts = true
 warn_return_any = true
@@ -135,5 +135,6 @@ exclude_lines = [
 
 [tool.pydocstyle]
 convention = "google"
+add-ignore = "D301,D212,D107"
 match = '(?!__init__).*\.py'
-match-dir='(?!(tests|migrations)).*'
+match-dir='(?!(tests)).*'

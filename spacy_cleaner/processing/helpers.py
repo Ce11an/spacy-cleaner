@@ -25,7 +25,9 @@ def replace_multi_whitespace(s: str, replace: str = " ") -> str:
 def token_pipe(
     tok: Token, *processors: Callable[[Token], Union[str, Token]]
 ) -> str:
-    """It takes a token, and applies a series of functions to it, until one of
+    """Applies a series of processors to a token until it becomes a string.
+
+    It takes a token, and applies a series of functions to it, until one of
         the functions returns a string.
 
     Args:
