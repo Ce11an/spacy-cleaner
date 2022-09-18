@@ -22,23 +22,6 @@ from spacy.tokens import Token
 from spacy_cleaner.processing import evaluators, transformers
 
 
-def replace_punctuation_token(
-    tok: Token, replace: str = "_IS_PUNCT_"
-) -> Union[str, Token]:
-    """If the token is punctuation, replace it with the string `_IS_PUNCT_`.
-
-    Args:
-      tok: A spaCy Token.
-      replace: The replacement string.
-
-    Returns:
-      The replacement string or the original token.
-    """
-    return transformers.TokenTransformer(
-        evaluators.PunctuationEvaluator(), replace
-    ).transform(tok)
-
-
 def replace_stopword_token(
     tok: Token, replace: str = "_IS_STOP_"
 ) -> Union[str, Token]:
@@ -56,6 +39,23 @@ def replace_stopword_token(
     ).transform(tok)
 
 
+def replace_punctuation_token(
+    tok: Token, replace: str = "_IS_PUNCT_"
+) -> Union[str, Token]:
+    """If the token is punctuation, replace it with the string `_IS_PUNCT_`.
+
+    Args:
+      tok: A spaCy Token.
+      replace: The replacement string.
+
+    Returns:
+      The replacement string or the original token.
+    """
+    return transformers.TokenTransformer(
+        evaluators.PunctuationEvaluator(), replace
+    ).transform(tok)
+
+
 def replace_email_token(
     tok: Token, replace: str = "_LIKE_EMAIL_"
 ) -> Union[str, Token]:
@@ -70,4 +70,21 @@ def replace_email_token(
     """
     return transformers.TokenTransformer(
         evaluators.EmailEvaluator(), replace
+    ).transform(tok)
+
+
+def replace_url_token(
+    tok: Token, replace: str = "_LIKE_URL_"
+) -> Union[str, Token]:
+    """If the token is like a URL, replace it with the string `_LIKE_URL_`.
+
+    Args:
+      tok: A spaCy Token.
+      replace: The replacement string.
+
+    Returns:
+      The replacement string or the original token.
+    """
+    return transformers.TokenTransformer(
+        evaluators.URLEvaluator(), replace
     ).transform(tok)
