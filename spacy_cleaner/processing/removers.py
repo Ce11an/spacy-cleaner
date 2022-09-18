@@ -26,7 +26,7 @@ def remove_stopword_token(tok: Token) -> Union[str, Token]:
     """If the token is a stopword, replace it with an empty string.
 
     Args:
-      tok: A spaCy Token.
+      tok: A `spaCy` token.
 
     Returns:
       An empty string or the original token.
@@ -40,7 +40,7 @@ def remove_punctuation_token(tok: Token) -> Union[str, Token]:
     """If the token is punctuation, replace it with an empty string.
 
     Args:
-      tok: A spaCy Token.
+      tok: A `spaCy` token.
 
     Returns:
       An empty string or the original token.
@@ -54,11 +54,25 @@ def remove_email_token(tok: Token) -> Union[str, Token]:
     """If the token is like an email, replace it with an empty string.
 
     Args:
-      tok: A spaCy Token.
+      tok: A `spaCy` token.
 
     Returns:
       An empty string or the original token.
     """
     return transformers.TokenTransformer(
         evaluators.EmailEvaluator(), replace=""
+    ).transform(tok)
+
+
+def remove_url_token(tok: Token) -> Union[str, Token]:
+    """If the token is like a URL, replace it with an empty string.
+
+    Args:
+      tok: A `spaCy` token.
+
+    Returns:
+      An empty string or the original token.
+    """
+    return transformers.TokenTransformer(
+        evaluators.URLEvaluator(), replace=""
     ).transform(tok)
