@@ -28,7 +28,7 @@ def replace_stopword_token(
     """If the token is a stopword, replace it with the string `_IS_STOP_`.
 
     Args:
-      tok: A spaCy Token.
+      tok: A `spaCy` token.
       replace: The replacement string.
 
     Returns:
@@ -45,7 +45,7 @@ def replace_punctuation_token(
     """If the token is punctuation, replace it with the string `_IS_PUNCT_`.
 
     Args:
-      tok: A spaCy Token.
+      tok: A `spaCy` token.
       replace: The replacement string.
 
     Returns:
@@ -62,7 +62,7 @@ def replace_email_token(
     """If the token is like an email, replace it with the string `_LIKE_EMAIL_`.
 
     Args:
-      tok: A spaCy Token.
+      tok: A `spaCy` token.
       replace: The replacement string.
 
     Returns:
@@ -79,7 +79,7 @@ def replace_url_token(
     """If the token is like a URL, replace it with the string `_LIKE_URL_`.
 
     Args:
-      tok: A spaCy Token.
+      tok: A `spaCy` token.
       replace: The replacement string.
 
     Returns:
