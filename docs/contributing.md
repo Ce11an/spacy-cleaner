@@ -25,7 +25,6 @@ make codestyle
 ### Checks
 
 Many checks are configured for this project. Command `make check-codestyle` will check black, isort and darglint.
-The `make check-safety` command will look at the security of your code.
 
 Command `make lint` applies all checks.
 
