@@ -42,7 +42,7 @@ class TestRemoveEmailToken:
         assert remove_email_token(tok) == tok
 
 
-class TestURLEmailToken:
+class TestURLToken:
     def test_remove_url_token_is_url(self, model):
         doc = model("www.google.com")
         tok = doc[0]
