@@ -15,7 +15,7 @@ _AnyContext = TypeVar("_AnyContext")
 class BaseCleaner(abc.ABC):
     """Abstract base class that defines the interface for text cleaning.
 
-    Attributes:
+    Args:
         model: SpaCy Language model for text cleaning.
     """
 
@@ -24,6 +24,7 @@ class BaseCleaner(abc.ABC):
         self.model = model
 
     # noinspection PyDefaultArgument
+    @abc.abstractmethod
     def clean(  # noqa: F811
         self,
         texts: Union[
@@ -41,12 +42,15 @@ class BaseCleaner(abc.ABC):
 
         Args:
             texts: A sequence of texts or docs to process.
-            as_tuples: If set to True, inputs should be a sequence of (text, context) tuples. Output will then be a
-                sequence of (doc, context) tuples. Defaults to False.
-            batch_size (Optional[int]): The number of texts to buffer.
+            as_tuples: If set to True, inputs should be a sequence of
+                (text, context) tuples. Output will then be a sequence of
+                (doc, context) tuples. Defaults to False.
+            batch_size: The number of texts to buffer.
             disable: The pipeline components to disable.
-            component_cfg: An optional dictionary with extra keyword arguments for specific components.
-            n_process: Number of processors to process texts. If -1, set `multiprocessing.cpu_count()`.
+            component_cfg: An optional dictionary with extra keyword arguments
+                for specific components.
+            n_process: Number of processors to process texts. If `-1`, set
+                `multiprocessing.cpu_count()`.
 
         Returns:
               A list of cleaned strings in the order of the original text.

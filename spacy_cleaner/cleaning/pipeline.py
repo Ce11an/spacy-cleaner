@@ -3,7 +3,7 @@
 import typing
 from typing import Any, Callable, Dict, Iterable, List, Optional, Tuple, Union
 
-import spacy
+import tqdm
 from spacy import Language
 from spacy.tokens import Doc, Token
 from spacy.util import SimpleFrozenList
@@ -12,7 +12,6 @@ from spacy_cleaner import processing
 from spacy_cleaner.base.base_cleaner import BaseCleaner, _AnyContext
 
 
-# noinspection PydanticTypeChecker
 class Pipeline(BaseCleaner):
     """Cleans a sequence of texts.
 
@@ -47,7 +46,7 @@ class Pipeline(BaseCleaner):
         super().__init__(model)
         self.processors = processors
 
-    # noinspection PyTypeChecker,PyDefaultArgument
+    # noinspection PyTypeChecker,PyDefaultArgument,PydanticTypeChecker
     @typing.no_type_check
     def clean(  # noqa: F811
         self,
@@ -83,12 +82,16 @@ class Pipeline(BaseCleaner):
         """
         return [
             processing.clean_doc(doc, *self.processors)
-            for doc in self.model.pipe(
-                texts,
-                as_tuples=as_tuples,
-                batch_size=batch_size,
-                disable=disable,
-                component_cfg=component_cfg,
-                n_process=n_process,
+            for doc in tqdm.tqdm(
+                self.model.pipe(
+                    texts,
+                    as_tuples=as_tuples,
+                    batch_size=batch_size,
+                    disable=disable,
+                    component_cfg=component_cfg,
+                    n_process=n_process,
+                ),
+                desc="Cleaning Progress",
+                total=len(texts),
             )
         ]

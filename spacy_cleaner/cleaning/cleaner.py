@@ -17,16 +17,17 @@ Typical usage example:
     clean_texts = cleaner.clean(texts, disable=["ner"])
     ```
 """
-
-from typing import List, Optional
+import typing
+from typing import Any, Dict, Iterable, List, Optional, Tuple, Union
 
 import warnings
 
 import tqdm
 from spacy import Language
 from spacy.tokens import Doc, Token
+from spacy.util import SimpleFrozenList
 
-from spacy_cleaner.base.base_cleaner import BaseCleaner
+from spacy_cleaner.base.base_cleaner import BaseCleaner, _AnyContext
 from spacy_cleaner.utils import exceptions
 
 
@@ -99,25 +100,51 @@ class Cleaner(BaseCleaner):
         self.remove_url = remove_url
         self.lemmatize = lemmatize
 
-    def clean(self, texts: List[str], **kwargs) -> List[str]:  # type: ignore
-        """Cleans each text in texts.
-
-        The method `clean` wraps the `spaCy` `Language` model pipe. When
-            cleaning, a progress bar is shown.
+    # noinspection PyTypeChecker,PyDefaultArgument,PydanticTypeChecker
+    @typing.no_type_check
+    def clean(  # noqa: F811
+        self,
+        texts: Union[
+            Iterable[Union[str, Doc]],
+            Iterable[Tuple[Union[str, Doc], _AnyContext]],
+        ],
+        *,
+        as_tuples: bool = False,
+        batch_size: Optional[int] = None,
+        disable: Iterable[str] = SimpleFrozenList(),
+        component_cfg: Optional[Dict[str, Dict[str, Any]]] = None,
+        n_process: int = 1,
+    ) -> List[str]:
+        """Clean a stream of texts.
 
         Args:
-          texts: List of texts to clean.
-          **kwargs: Keyword Arguments for pipe method:
-            https://spacy.io/api/language#pipe
+            texts: A sequence of texts or docs to process.
+            as_tuples: If set to True, inputs should be a sequence of
+                (text, context) tuples. Output will then be a sequence of
+                (doc, context) tuples. Defaults to False.
+            batch_size: The number of texts to buffer.
+            disable: The pipeline components to disable.
+            component_cfg: An optional dictionary with extra keyword arguments
+                for specific components.
+            n_process: Number of processors to process texts. If `-1`, set
+                `multiprocessing.cpu_count()`.
 
         Returns:
-          A list of cleaned texts.
+              A list of cleaned strings in the order of the original text.
 
+        DOCS: https://spacy.io/api/language#pipe
         """
         return [
             self._clean_doc(doc)
             for doc in tqdm.tqdm(
-                self.model.pipe(texts, **kwargs),
+                self.model.pipe(
+                    texts,
+                    as_tuples=as_tuples,
+                    batch_size=batch_size,
+                    disable=disable,
+                    component_cfg=component_cfg,
+                    n_process=n_process,
+                ),
                 desc="Cleaning Progress",
                 total=len(texts),
             )
