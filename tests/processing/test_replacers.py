@@ -3,7 +3,10 @@ from spacy_cleaner.processing import (
     replace_punctuation_token,
     replace_stopword_token,
 )
-from spacy_cleaner.processing.replacers import replace_url_token
+from spacy_cleaner.processing.replacers import (
+    replace_number_token,
+    replace_url_token,
+)
 
 
 class TestReplaceStopwordToken:
@@ -52,3 +55,15 @@ class TestReplaceURLToken:
         doc = model(".")
         tok = doc[0]
         assert replace_url_token(tok) == tok
+
+
+class TestReplaceNumberToken:
+    def test_replace_number_token_is_number(self, model):
+        doc = model("ten")
+        tok = doc[0]
+        assert replace_number_token(tok) == "_LIKE_NUM_"
+
+    def test_replace_url_token_is_not_url(self, model):
+        doc = model(".")
+        tok = doc[0]
+        assert replace_number_token(tok) == tok

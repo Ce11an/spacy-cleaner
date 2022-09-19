@@ -76,3 +76,17 @@ def remove_url_token(tok: Token) -> Union[str, Token]:
     return transformers.TokenTransformer(
         evaluators.URLEvaluator(), replace=""
     ).transform(tok)
+
+
+def remove_number_token(tok: Token) -> Union[str, Token]:
+    """If the token is like a number, replace it with an empty string.
+
+    Args:
+      tok: A `spaCy` token.
+
+    Returns:
+      An empty string or the original token.
+    """
+    return transformers.TokenTransformer(
+        evaluators.NumberEvaluator(), replace=""
+    ).transform(tok)

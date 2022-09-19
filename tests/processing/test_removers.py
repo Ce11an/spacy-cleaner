@@ -1,6 +1,7 @@
 from spacy_cleaner.processing import remove_stopword_token
 from spacy_cleaner.processing.removers import (
     remove_email_token,
+    remove_number_token,
     remove_punctuation_token,
     remove_url_token,
 )
@@ -52,3 +53,15 @@ class TestURLToken:
         doc = model(".")
         tok = doc[0]
         assert remove_url_token(tok) == tok
+
+
+class TestNumberToken:
+    def test_remove_number_token_is_number(self, model):
+        doc = model("ten")
+        tok = doc[0]
+        assert remove_number_token(tok) == ""
+
+    def test_remove_number_token_is_not_number(self, model):
+        doc = model(".")
+        tok = doc[0]
+        assert remove_number_token(tok) == tok

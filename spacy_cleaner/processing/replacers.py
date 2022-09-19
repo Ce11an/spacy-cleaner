@@ -88,3 +88,20 @@ def replace_url_token(
     return transformers.TokenTransformer(
         evaluators.URLEvaluator(), replace
     ).transform(tok)
+
+
+def replace_number_token(
+    tok: Token, replace: str = "_LIKE_NUM_"
+) -> Union[str, Token]:
+    """If the token is like a number, replace it with the string `_LIKE_NUM_`.
+
+    Args:
+      tok: A `spaCy` token.
+      replace: The replacement string.
+
+    Returns:
+      The replacement string or the original token.
+    """
+    return transformers.TokenTransformer(
+        evaluators.NumberEvaluator(), replace
+    ).transform(tok)

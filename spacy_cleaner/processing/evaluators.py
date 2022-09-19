@@ -79,3 +79,18 @@ class URLEvaluator(Evaluator):
             `True` if the token is like a URL. `False` if not.
         """
         return tok.like_url
+
+
+class NumberEvaluator(Evaluator):
+    """Evaluates Numbers."""
+
+    def evaluate(self, tok: Token) -> bool:
+        """If the given token is like a number.
+
+        Args:
+            tok: The token to evaluate.
+
+        Returns:
+            `True` if the token is like a number. `False` if not.
+        """
+        return tok.like_num
