@@ -23,6 +23,7 @@ Easily clean text with spaCy!
 
 * Remove/replace stopwords.
 * Remove/replace punctuation.
+* Remove/replace numbers.
 * Remove/replace emails.
 * Remove/replace URLs.
 * Perform lemmatisation.
