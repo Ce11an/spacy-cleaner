@@ -45,7 +45,7 @@ pydocstyle = "~=6.1.1"
 pylint = "~=2.15.0"
 pyupgrade = "~=2.37.3"
 pytest-cov = "~=3.0.0"
-mkdocs-material = "^8.4.3"
+mkdocs-material = "^8.5.4"
 mkdocstrings = {extras = ["python"], version = "^0.19.0"}
 
 [tool.black]
