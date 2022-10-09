@@ -44,7 +44,7 @@ pre-commit = "~=2.20.0"
 pydocstyle = "~=6.1.1"
 pylint = "~=2.15.3"
 pyupgrade = "~=2.37.3"
-pytest-cov = "~=3.0.0"
+pytest-cov = "~=4.0.0"
 mkdocs-material = "^8.4.3"
 mkdocstrings = {extras = ["python"], version = "^0.19.0"}
 
