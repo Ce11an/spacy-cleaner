@@ -679,14 +679,14 @@ plugins = ["importlib-metadata"]
 
 [[package]]
 name = "pylint"
-version = "2.15.2"
+version = "2.15.3"
 description = "python code static checker"
 category = "dev"
 optional = false
 python-versions = ">=3.7.2"
 
 [package.dependencies]
-astroid = ">=2.12.9,<=2.14.0-dev0"
+astroid = ">=2.12.10,<=2.14.0-dev0"
 colorama = {version = ">=0.4.5", markers = "sys_platform == \"win32\""}
 dill = ">=0.2"
 isort = ">=4.2.5,<6"
@@ -1163,7 +1163,7 @@ testing = ["func-timeout", "jaraco.itertools", "pytest (>=6)", "pytest-black (>=
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "48c95a7fb8f6037bf8dcff83089f39b1e65fe4cef364aff1c1e012c20096cb84"
+content-hash = "5f7be39027314ce7c49b78554dd159764dc1dba061ffd934df6df3bf30f4e247"
 
 [metadata.files]
 astroid = [
@@ -1707,8 +1707,8 @@ Pygments = [
     {file = "Pygments-2.13.0.tar.gz", hash = "sha256:56a8508ae95f98e2b9bdf93a6be5ae3f7d8af858b43e02c5a2ff083726be40c1"},
 ]
 pylint = [
-    {file = "pylint-2.15.2-py3-none-any.whl", hash = "sha256:cc3da458ba810c49d330e09013dec7ced5217772dec8f043ccdd34dae648fde8"},
-    {file = "pylint-2.15.2.tar.gz", hash = "sha256:f63404a2547edb5247da263748771ac9a806ed1de4174cda01293c08ddbc2999"},
+    {file = "pylint-2.15.3-py3-none-any.whl", hash = "sha256:7f6aad1d8d50807f7bc64f89ac75256a9baf8e6ed491cc9bc65592bc3f462cf1"},
+    {file = "pylint-2.15.3.tar.gz", hash = "sha256:5fdfd44af182866999e6123139d265334267339f29961f00c89783155eacc60b"},
 ]
 pymdown-extensions = [
     {file = "pymdown_extensions-9.5-py3-none-any.whl", hash = "sha256:ec141c0f4983755349f0c8710416348d1a13753976c028186ed14f190c8061c4"},
