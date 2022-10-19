@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![spacy-cleaner](docs/assets/images/spacemen.png)
+![spacy-cleaner](https://raw.githubusercontent.com/Ce11an/spacy-cleaner/main/docs/assets/images/spacemen.png)
 
 [![Built with spaCy](https://img.shields.io/badge/built%20with-spaCy-09a3d5.svg)](https://spacy.io)
 [![Build status](https://github.com/Ce11an/spacy-cleaner/workflows/build/badge.svg?branch=main&event=push)](https://github.com/Ce11an/spacy-cleaner/actions?query=workflow%3Abuild)
