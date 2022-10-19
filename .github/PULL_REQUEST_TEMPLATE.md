@@ -25,4 +25,4 @@
 - [ ] I've read the [`CONTRIBUTING.md`](https://github.com/Ce11an/spacy-cleaner/blob/main/CONTRIBUTING.md) guide.
 - [ ] I've updated the code style using `make codestyle`.
 - [ ] I've written tests for all new methods and classes that I created.
-- [ ] I've written the docstring in Sphinx format for all the methods and classes that I used.
+- [ ] I've written the docstring in Google style format for all the methods and classes that I used.
