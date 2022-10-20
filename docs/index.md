@@ -48,7 +48,7 @@ Class `Pipeline` allows for configurable cleaning of text using `spaCy`. The
 pipeline = spacy_cleaner.Pipeline(
     model,
     removers.remove_stopword_token,
-    replace.replace_punctuation_token,
+    replacers.replace_punctuation_token,
     mutators.mutate_lemma_token,
 )
 ```
@@ -73,5 +73,5 @@ https://spacy.io/api/language#pipe
 
 Giving the output:
 ```python
-['Hello _IS_PUNCT_ Cellan _IS_PUNCT_ love swim _IS_PUNCT_']
+['hello _IS_PUNCT_ Cellan _IS_PUNCT_ love swim _IS_PUNCT_']
 ```

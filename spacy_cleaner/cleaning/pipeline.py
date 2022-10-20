@@ -36,7 +36,7 @@ class Pipeline(BaseCleaner):
             mutate_lemma_token,
         )
         pipline.clean(texts)
-        ['Hello _IS_PUNCT_ Cellan _IS_PUNCT_ love swim _IS_PUNCT_']
+        ['hello _IS_PUNCT_ Cellan _IS_PUNCT_ love swim _IS_PUNCT_']
         ```
     """
 
