@@ -45,7 +45,7 @@ or install with `Poetry`
 poetry add spacy-cleaner
 ```
 
-## Example
+## 📖 Example
 
 **spacy-cleaner** can clean text written in any language `spaCy` has a model 
   for:
