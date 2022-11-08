@@ -28,7 +28,7 @@ Easily clean text with spaCy!
 * Remove/replace URLs.
 * Perform lemmatisation.
 
-## Example
+## 📖 Example
 
 **spacy-cleaner** can clean text written in any language `spaCy` has a model 
   for:
@@ -75,3 +75,30 @@ Giving the output:
 ```python
 ['hello _IS_PUNCT_ Cellan _IS_PUNCT_ love swim _IS_PUNCT_']
 ```
+
+## 🛡 License
+
+[![License](https://img.shields.io/github/license/Ce11an/spacy-cleaner)](https://github.com/Ce11an/spacy-cleaner/blob/main/LICENSE)
+
+This project is licensed under the terms of the `MIT` license. See [LICENSE](https://github.com/Ce11an/spacy-cleaner/blob/main/LICENSE) for more details.
+
+## 📃 Citation
+
+```bibtex
+@misc{spacy-cleaner,
+  author = {spacy-cleaner},
+  title = {Easily clean text with spaCy!},
+  year = {2022},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/Ce11an/spacy-cleaner}}
+}
+```
+
+## 🚀 Credits
+
+This project was generated with [`python-package-template`](https://github.com/TezRomacH/python-package-template)
+
+This project was built using [IntelliJ IDEA](https://www.jetbrains.com/community/opensource/?utm_campaign=opensource&utm_content=approved&utm_medium=email&utm_source=newsletter&utm_term=jblogo#support) 
+
+![JetBrains Black Box Logo logo](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_square.svg)
