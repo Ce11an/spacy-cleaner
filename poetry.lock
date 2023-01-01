@@ -928,7 +928,7 @@ transformers = ["spacy-transformers (>=1.1.2,<1.2.0)"]
 
 [[package]]
 name = "spacy-legacy"
-version = "3.0.10"
+version = "3.0.11"
 description = "Legacy registered functions for spaCy backwards compatibility"
 category = "main"
 optional = false
@@ -1832,8 +1832,8 @@ spacy = [
     {file = "spacy-3.4.1.tar.gz", hash = "sha256:59c5cf5d348a6c0e64a59ac5cfe6cd85d08e866337870c95d1ec6161d531e463"},
 ]
 spacy-legacy = [
-    {file = "spacy-legacy-3.0.10.tar.gz", hash = "sha256:16104595d8ab1b7267f817a449ad1f986eb1f2a2edf1050748f08739a479679a"},
-    {file = "spacy_legacy-3.0.10-py2.py3-none-any.whl", hash = "sha256:8526a54d178dee9b7f218d43e5c21362c59056c5da23380b319b56043e9211f3"},
+    {file = "spacy-legacy-3.0.11.tar.gz", hash = "sha256:bfaef03c377c323a3089b1885518e0dad489597b07a80af2499750b24fdbf54b"},
+    {file = "spacy_legacy-3.0.11-py2.py3-none-any.whl", hash = "sha256:7b2a72bfe8e135c5885ecf22db946daa352c7a24639aaeda10a76d4c1c66196f"},
 ]
 spacy-loggers = [
     {file = "spacy-loggers-1.0.3.tar.gz", hash = "sha256:00f6fd554db9fd1fde6501b23e1f0e72f6eef14bb1e7fc15456d11d1d2de92ca"},
