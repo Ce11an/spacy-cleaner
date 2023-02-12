@@ -27,24 +27,24 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.11"
-spacy = "~=3.4.1"
-tqdm = "~=4.64.0"
+spacy = "~=3.5.0"
+tqdm = "~=4.64.1"
 spacy-lookups-data = "~=1.0.3"
 
 [tool.poetry.dev-dependencies]
 bandit = "~=1.7.1"
 black = "~=22.10.0"
 darglint = "~=1.8.1"
-isort = {extras = ["colors"], version = "~=5.10.1"}
-mypy = "~=0.982"
+isort = {extras = ["colors"], version = "~=5.12.0"}
+mypy = "~=0.991"
 mypy-extensions = "~=0.4.3"
 pre-commit = "~=2.20.0"
-pydocstyle = "~=6.1.1"
-pylint = "~=2.15.5"
-pyupgrade = "~=3.2.0"
+pydocstyle = "~=6.3.0"
+pylint = "~=2.15.10"
+pyupgrade = "~=3.3.1"
 pytest-cov = "~=4.0.0"
-mkdocs-material = "^8.5.7"
-mkdocstrings = {extras = ["python"], version = "^0.19.0"}
+mkdocs-material = "~9.0.12"
+mkdocstrings = {extras = ["python"], version = "~0.20.0"}
 
 [tool.black]
 # https://github.com/psf/black
