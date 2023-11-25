@@ -1,0 +1,43 @@
+name: Code Stability
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: stability-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  stability:
+    name: stability-${{ matrix.os }} / ${{ matrix.python-version }} ${{ matrix.suffix }}
+    runs-on: ${{ matrix.image }}
+    strategy:
+      matrix:
+        os: [ Ubuntu, macOS, Windows ]
+        python-version: [ "3.8", "3.9", "3.10", "3.11" ]
+        include:
+          - os: Ubuntu
+            image: ubuntu-latest
+          - os: Windows
+            image: windows-2023
+          - os: macOS
+            image: macos-13
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Python
+        uses: ./.github/actions
+
+      - id: format
+        if: ${{ always() }}
+        run: make fmt
+
+      - id: type-check
+        if: ${{ always() }}
+        run: make type-check
