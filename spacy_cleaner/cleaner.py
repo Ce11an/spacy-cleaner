@@ -98,7 +98,7 @@ class Cleaner:
         return [
             helpers.clean_doc(doc, *self.processors)
             for doc in tqdm.tqdm(
-                self.model.pipe(    # type: ignore[call-overload]
+                self.model.pipe(  # type: ignore[call-overload]
                     texts,
                     as_tuples=as_tuples,
                     batch_size=batch_size,
@@ -107,6 +107,6 @@ class Cleaner:
                     n_process=n_process,
                 ),
                 desc="Cleaning Progress",
-                total=len(texts), # type: ignore[arg-type]
+                total=len(texts),  # type: ignore[arg-type]
             )
         ]
