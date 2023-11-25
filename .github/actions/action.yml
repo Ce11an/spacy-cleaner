@@ -22,12 +22,13 @@ runs:
       shell: bash
 
     - name: Update PATH
+      if: ${{ matrix.os != 'Windows' }}
       run: echo "$HOME/.local/bin" >> $GITHUB_PATH
       shell: bash
 
-    - name: Update PATH
-      if: ${{ matrix.os != 'Windows' }}
-      run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+    - name: Update Path for Windows
+      if: ${{ matrix.os == 'Windows' }}
+      run: echo "$APPDATA\Python\Scripts" >> $GITHUB_PATH
       shell: bash
 
     - name: Set up cache
