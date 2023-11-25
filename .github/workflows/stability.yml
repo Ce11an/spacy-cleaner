@@ -41,3 +41,7 @@ jobs:
       - id: type-check
         if: ${{ always() }}
         run: make type-check
+
+      - id: test
+        if: ${{ always() }}
+        run: poetry run pytest --cov-report xml --cov=spacy_cleaner tests/
