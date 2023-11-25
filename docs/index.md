@@ -45,7 +45,7 @@ Class `Pipeline` allows for configurable cleaning of text using `spaCy`. The
   tokens:
 
 ```python
-pipeline = spacy_cleaner.Pipeline(
+pipeline = spacy_cleaner.Cleaner(
     model,
     removers.remove_stopword_token,
     replacers.replace_punctuation_token,

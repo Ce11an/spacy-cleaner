@@ -1,61 +1,38 @@
-#* Variables
-SHELL := /usr/bin/env bash
-PYTHON := python
-PYTHONPATH := `pwd`
+.DEFAULT_GOAL := help
 
-#* Poetry
-.PHONY: poetry-download
-poetry-download:
-	curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | $(PYTHON) -
+.PHONY: help
+# See <https://gist.github.com/klmr/575726c7e05d8780505a> for explanation.
+help:
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-.PHONY: poetry-remove
-poetry-remove:
-	curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | $(PYTHON) -
-#* Installation
+.PHONY: fmt
+fmt: ## Format code.
+	poetry run ruff format .
+	poetry run ruff check . --fix
+
+.PHONY: build
+build: ## Builds the source and wheel archives.
+	poetry build
+
 .PHONY: install
-install:
-	poetry lock -n && poetry export --without-hashes > requirements.txt
-	poetry install -n
-	-poetry run mypy --install-types --non-interactive ./
+install: ## Install the Python dependencies, including those for development and testing.
+	poetry install --no-root
 
-.PHONY: pre-commit-install
-pre-commit-install:
-	poetry run pre-commit install
+.PHONY: type-check
+type-check: ## Check for typing errors.
+	poetry run mypy .
 
-#* Formatters
-.PHONY: codestyle
-codestyle:
-	poetry run pyupgrade --exit-zero-even-if-changed --py37-plus **/*.py
-	poetry run isort --settings-path pyproject.toml ./
-	poetry run black --config pyproject.toml ./
-
-.PHONY: formatting
-formatting: codestyle
-
-#* Linting
 .PHONY: test
-test:
-	PYTHONPATH=$(PYTHONPATH) poetry run pytest -c pyproject.toml --cov-report=html --cov=spacy_cleaner tests/
+test: ## Test code
+	poetry run pytest --cov-report term --cov-report xml:coverage.xml --cov-report=html tests --cov=spacy_cleaner
 
-.PHONY: check-codestyle
-check-codestyle:
-	poetry run isort --diff --check-only --settings-path pyproject.toml ./
-	poetry run black --diff --check --config pyproject.toml ./
-	poetry run darglint --verbosity 2 spacy_cleaner tests
+.PHONY: coverage-remove
+coverage-remove:
+	rm -rf .coverage
+	rm -rf htmlcov/
+	rm -rf coverage.xml
+	rm -rf gitlab-report.xml
 
-.PHONY: mypy
-mypy:
-	poetry run mypy --no-strict-optional --config-file pyproject.toml ./
-
-.PHONY: lint
-lint: test check-codestyle mypy
-
-.PHONY: update-dev-deps
-update-dev-deps:
-	poetry add -D bandit@latest darglint@latest "isort[colors]@latest" mypy@latest pre-commit@latest pydocstyle@latest pylint@latest pytest@latest pyupgrade@latest coverage@latest coverage-badge@latest pytest-html@latest pytest-cov@latest
-	poetry add -D --allow-prereleases black@latest
-
-#* Cleaning
 .PHONY: pycache-remove
 pycache-remove:
 	find . | grep -E "(__pycache__|\.pyc|\.pyo$$)" | xargs rm -rf
@@ -68,17 +45,21 @@ dsstore-remove:
 mypycache-remove:
 	find . | grep -E ".mypy_cache" | xargs rm -rf
 
-.PHONY: ipynbcheckpoints-remove
-ipynbcheckpoints-remove:
-	find . | grep -E ".ipynb_checkpoints" | xargs rm -rf
-
 .PHONY: pytestcache-remove
 pytestcache-remove:
 	find . | grep -E ".pytest_cache" | xargs rm -rf
 
-.PHONY: build-remove
-build-remove:
-	rm -rf build/
+.PHONY: ruff-remove
+ruff-remove:
+	find . | grep -E ".ruff_cache" | xargs rm -rf
+
+.PHONY: dist-remove
+dist-remove:
+	rm -rf dist/
+
+.PHONY: public-remove
+public-remove:
+	rm -rf public
 
 .PHONY: cleanup
-cleanup: pycache-remove dsstore-remove mypycache-remove ipynbcheckpoints-remove pytestcache-remove
+cleanup: coverage-remove pycache-remove dsstore-remove mypycache-remove pytestcache-remove dist-remove ruff-remove public-remove ## Cleanup residual files.

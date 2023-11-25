@@ -1,2 +1,6 @@
-from spacy_cleaner.cleaning.cleaner import Cleaner
-from spacy_cleaner.cleaning.pipeline import Pipeline
+"""Easily clean text data with `spaCy`."""
+
+from spacy_cleaner import processing
+from spacy_cleaner.cleaner import Cleaner
+
+__all__ = ["Cleaner", "processing"]

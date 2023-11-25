@@ -1,18 +1,17 @@
-"""Class `Pipeline` allows for configurable cleaning of text using `spaCy`."""
+"""Class `Cleaner` allows for configurable cleaning of text using `spaCy`."""
 
-import typing
-from typing import Any, Callable, Dict, Iterable, List, Optional, Tuple, Union
+from typing import Any, Optional, TypeVar, Union, List, Dict, Callable, Iterable
 
+import spacy
 import tqdm
-from spacy import Language
-from spacy.tokens import Doc, Token
-from spacy.util import SimpleFrozenList
+from spacy import tokens, util
 
-from spacy_cleaner import processing
-from spacy_cleaner.base.base_cleaner import BaseCleaner, _AnyContext
+from spacy_cleaner.processing import helpers
+
+_AnyContext = TypeVar("_AnyContext")
 
 
-class Pipeline(BaseCleaner):
+class Cleaner:
     """Cleans a sequence of texts.
 
     Args:
@@ -22,6 +21,10 @@ class Pipeline(BaseCleaner):
     Example:
         ```python
         import spacy
+        from spacy_cleaner import (
+            Cleaner,
+            processing
+        )
 
         model = spacy.blank("en")
         model.add_pipe("lemmatizer", config={"mode": "lookup"})
@@ -29,35 +32,36 @@ class Pipeline(BaseCleaner):
 
         texts = ["Hello, my name is Cellan! I love to swim!"]
 
-        pipline = Pipeline(
+        cleaner = Cleaner(
             model,
-            remove_stopword_token,
-            replace_punctuation_token,
-            mutate_lemma_token,
+            processing.remove_stopword_token,
+            processing.replace_punctuation_token,
+            processing.mutate_lemma_token,
         )
-        pipline.clean(texts)
+        cleaner.clean(texts)
         ['hello _IS_PUNCT_ Cellan _IS_PUNCT_ love swim _IS_PUNCT_']
         ```
     """
 
     def __init__(
-        self, model: Language, *processors: Callable[[Token], Union[str, Token]]
+        self,
+        model: spacy.Language,
+        *processors: Callable[[tokens.Token], Union[str, tokens.Token]],
     ) -> None:
-        super().__init__(model)
+        self.model = model
         self.processors = processors
 
-    # noinspection PyTypeChecker,PyDefaultArgument,PydanticTypeChecker
-    @typing.no_type_check
+    # noinspection PyTypeChecker,PyDefaultArgumentdd,PyDefaultArgument
     def clean(  # noqa: F811
         self,
         texts: Union[
-            Iterable[Union[str, Doc]],
-            Iterable[Tuple[Union[str, Doc], _AnyContext]],
+            Iterable[Union[str, tokens.Doc]],
+            Iterable[tuple[Union[str, tokens.Doc], _AnyContext]],
         ],
         *,
         as_tuples: bool = False,
         batch_size: Optional[int] = None,
-        disable: Iterable[str] = SimpleFrozenList(),
+        disable: Iterable[str] = util.SimpleFrozenList(),
         component_cfg: Optional[Dict[str, Dict[str, Any]]] = None,
         n_process: int = 1,
     ) -> List[str]:
@@ -78,10 +82,11 @@ class Pipeline(BaseCleaner):
         Returns:
               A list of cleaned strings in the order of the original text.
 
-        DOCS: https://spacy.io/api/language#pipe
+        References:
+            https://spacy.io/api/language#pipe
         """
         return [
-            processing.clean_doc(doc, *self.processors)
+            helpers.clean_doc(doc, *self.processors)
             for doc in tqdm.tqdm(
                 self.model.pipe(
                     texts,

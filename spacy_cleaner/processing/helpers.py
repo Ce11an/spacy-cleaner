@@ -1,11 +1,10 @@
 """Processing helper functions."""
 
-import typing
-from typing import Callable, Union
-
 import re
+from collections.abc import Callable
+from typing import Union
 
-from spacy.tokens import Doc, Token
+from spacy import tokens
 
 
 def replace_multi_whitespace(s: str, replace: str = " ") -> str:
@@ -21,9 +20,9 @@ def replace_multi_whitespace(s: str, replace: str = " ") -> str:
     return re.sub(r"\s\s+", replace, s, flags=re.UNICODE).strip()
 
 
-@typing.no_type_check
 def token_pipe(
-    tok: Token, *processors: Callable[[Token], Union[str, Token]]
+    tok: tokens.Token,
+    *processors: Callable[[tokens.Token], Union[str, tokens.Token]],
 ) -> str:
     """Applies a series of processors to a token until it becomes a string.
 
@@ -35,7 +34,7 @@ def token_pipe(
         *processors: Callable token processors.
 
     Returns:
-        A string.
+        A string of the token after being processed.
     """
     for processor in processors:
         tok = processor(tok)
@@ -45,12 +44,13 @@ def token_pipe(
 
 
 def clean_doc(
-    doc: Doc, *processors: Callable[[Token], Union[str, Token]]
+    doc: tokens.Doc,
+    *processors: Callable[[tokens.Token], Union[str, tokens.Token]],
 ) -> str:
     """Cleans a spaCy document and returns a cleaned string.
 
     Args:
-        doc: spaCy Doc to be cleaned.
+        doc: spaCy document to be cleaned.
         *processors: Callable token processors.
 
     Returns:

@@ -1,9 +1,12 @@
+"""Fixtures for tests."""
+
 import pytest
 import spacy
 
 
-@pytest.fixture
-def texts():
+@pytest.fixture()
+def texts() -> list[str]:
+    """Return a list of texts."""
     return [
         "spacy-cleaner is the first package I have made so I am very "
         "excited for others to use it :) IF YoU HAve anY IssUes, please "
@@ -15,8 +18,9 @@ def texts():
     ]
 
 
-@pytest.fixture
-def model():
+@pytest.fixture()
+def model() -> spacy.Language:
+    """Return a blank spaCy model."""
     model = spacy.blank("en")
     model.add_pipe("lemmatizer", config={"mode": "lookup"})
     model.initialize()

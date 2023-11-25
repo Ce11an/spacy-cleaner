@@ -2,12 +2,12 @@
 
 from typing import Union
 
-from spacy.tokens import Token
+from spacy import tokens
 
-from spacy_cleaner.base.protocols import Evaluator
+from spacy_cleaner.processing import evaluators
 
 
-class TokenTransformer:
+class Transformer:
     """Transforms a token using the evaluator.
 
     Args:
@@ -18,16 +18,16 @@ class TokenTransformer:
         ```python
         from spacy_cleaner.processing.evaluators import StopwordsEvaluator
 
-        transformer = TokenTransformer(StopwordsEvaluator(), replace="")
+        transformer = Transformer(StopwordsEvaluator(), replace="")
         transformer.transform(tok)
         ```
     """
 
-    def __init__(self, evaluator: Evaluator, replace: str) -> None:
+    def __init__(self, evaluator: evaluators.Evaluator, replace: str) -> None:
         self.evaluator = evaluator
         self.replace = replace
 
-    def transform(self, tok: Token) -> Union[str, Token]:
+    def transform(self, tok: tokens.Token) -> Union[str, tokens.Token]:
         """Processes a token using the evaluator.
 
         Args:

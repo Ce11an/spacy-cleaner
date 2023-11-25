@@ -1,3 +1,7 @@
+"""Tests for `spacy_cleaner.processing.helpers`."""
+
+import spacy
+
 from spacy_cleaner.processing import mutate_lemma_token, remove_stopword_token
 from spacy_cleaner.processing.helpers import (
     replace_multi_whitespace,
@@ -6,13 +10,19 @@ from spacy_cleaner.processing.helpers import (
 
 
 class TestReplaceMultiWhitespace:
-    def test_replace_multi_whitespace(self):
+    """Tests for `replace_multi_whitespace`."""
+
+    def test_replace_multi_whitespace(self) -> None:
+        """Test multiple whitespaces are replaced with a single whitespace."""
         s = "   this  is a    test!"
         assert replace_multi_whitespace(s) == "this is a test!"
 
 
 class TestTokenPipe:
-    def test_token_pipe_str(self, model):
+    """Tests for `token_pipe`."""
+
+    def test_token_pipe_replace(self, model: spacy.Language) -> None:
+        """Test that lemma is returned for string."""
         doc = model("swimming")
         tok = doc[0]
         assert (
@@ -24,7 +34,8 @@ class TestTokenPipe:
             == "swim"
         )
 
-    def test_token_pipe_tokn(self, model):
+    def test_token_pipe_original(self, model: spacy.Language) -> None:
+        """That that original token is returned for token."""
         doc = model("swimming")
         tok = doc[0]
         assert (
