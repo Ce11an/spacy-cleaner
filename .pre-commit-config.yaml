@@ -20,3 +20,10 @@ repos:
       # Run the formatter.
       - id: ruff-format
         types_or: [ python, pyi ]
+  - repo: https://github.com/python-poetry/poetry
+    rev: '1.7.1'
+    hooks:
+      - id: poetry-check
+      - id: poetry-lock
+        args:
+          - --no-update
