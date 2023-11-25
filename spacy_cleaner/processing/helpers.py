@@ -1,8 +1,7 @@
 """Processing helper functions."""
 
 import re
-from collections.abc import Callable
-from typing import Union
+from typing import Callable, Union
 
 from spacy import tokens
 
