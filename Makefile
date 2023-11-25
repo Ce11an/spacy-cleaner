@@ -18,6 +18,10 @@ build: ## Builds the source and wheel archives.
 install: ## Install the Python dependencies, including those for development and testing.
 	poetry install --no-root
 
+.PHONY: fmt-check
+fmt-check: ## Check for formatting errors.
+	poetry run ruff check .
+
 .PHONY: type-check
 type-check: ## Check for typing errors.
 	poetry run mypy .
