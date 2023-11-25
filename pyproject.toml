@@ -25,7 +25,7 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.8,<3.11"
+python = ">=3.8,<3.12"
 spacy = "~=3.7.2"
 tqdm = "~=4.66.1"
 spacy-lookups-data = "~=1.0.5"

@@ -1,46 +1,41 @@
-# How to contribute
+## Contributing code
 
-## Dependencies
+Check the [Makefile](Makefile) for useful commands to help you get started. Run
+`make help` to see a list of all available commands.
 
-We use `poetry` to manage the [dependencies](https://github.com/python-poetry/poetry).
-If you don't have `poetry`, you should install with `make poetry-download`.
+### Dependencies
+We use [Poetry](https://python-poetry.org/) to manage dependencies. Please 
+install Poetry before contributing code. We also utilise 
+[pre-commit](https://pre-commit.com/) to manage pre-commit hooks. Please install
+pre-commit before contributing code.
 
-To install dependencies and prepare [`pre-commit`](https://pre-commit.com/) hooks you would need to run `install` command:
+You can install all dependencies by running `make install` in the root directory 
+of this project.
 
-```bash
-make install
-make pre-commit-install
-```
+### Code style
+We use [ruff](https://beta.ruff.rs/docs/) to format and lint our code. Please 
+run `pre-commit run --all-files` or `make fmt` before submitting a pull 
+request to ensure your code is formatted correctly and passes all linting 
+checks.
 
-To activate your `virtualenv` run `poetry shell`.
+### Testing
+We use [pytest](https://docs.pytest.org/en/stable/) to test our code. Please 
+write tests for all new code you write. You can run all tests by running 
+`make test` in the root directory of this project.
 
-## Codestyle
+### Type checking
+We use [mypy](https://mypy.readthedocs.io/en/stable/) to type check our code. Please run `make type-check` before 
+submitting a pull request to ensure your code is type checked correctly.
 
-After installation, you may execute code formatting.
+## Before submitting a pull request
+Before submitting a pull request, please ensure that you have run 
+`pre-commit run --all-files`, `make test`, and `make type-check` to ensure your 
+code is formatted correctly, passes all linting checks, and passes all tests.
 
-```bash
-make codestyle
-```
+Please ensure you follow these steps:
 
-### Checks
-
-Many checks are configured for this project. Command `make check-codestyle` will check black, isort and darglint.
-
-Command `make lint` applies all checks.
-
-### Before submitting
-
-Before submitting your code please do the following steps:
-
-1. Add any changes you want
-1. Add tests for the new changes
-1. Edit documentation if you have changed something significant
-1. Run `make codestyle` to format your changes.
-1. Run `make lint` to ensure that types and docstrings are okay.
-
-## Other help
-
-You can contribute by spreading a word about this library.
-It would also be a huge contribution to write
-a short article on how you are using this project.
-You can also share your best practices with us.
+1. Fork the repository and create your branch from `main`.
+2. If you've added code that should be tested, add tests.
+3. Ensure the test suite passes.
+4. Make sure your code lints.
+5. Issue that pull request!

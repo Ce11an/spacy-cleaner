@@ -31,10 +31,7 @@ class Cleaner:
     Example:
         ```python
         import spacy
-        from spacy_cleaner import (
-            Cleaner,
-            processing
-        )
+        from spacy_cleaner import Cleaner, processing
 
         model = spacy.blank("en")
         model.add_pipe("lemmatizer", config={"mode": "lookup"})

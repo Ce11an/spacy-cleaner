@@ -1,3 +1,5 @@
-# Configuration: https://help.github.com/en/github/building-a-strong-community/configuring-issue-templates-for-your-repository
-
 blank_issues_enabled: false
+contact_links:
+  - name: Question or idea
+    url: https://github.com/Ce11an/spacy-cleaner/discussions
+    about: Ask questions and discuss ideas here.

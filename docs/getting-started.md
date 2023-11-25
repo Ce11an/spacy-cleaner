@@ -54,4 +54,3 @@ poetry add spacy-cleaner
 ---
 
   [Poetry]: https://python-poetry.org/
-

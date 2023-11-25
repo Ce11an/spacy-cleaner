@@ -1,5 +1,3 @@
-# spacy-cleaner
-
 <div align="center">
 
 ![spacy-cleaner](https://raw.githubusercontent.com/Ce11an/spacy-cleaner/main/docs/assets/images/spacemen.png)
@@ -9,12 +7,14 @@
 [![Python Version](https://img.shields.io/pypi/pyversions/spacy-cleaner.svg)](https://pypi.org/project/spacy-cleaner/)
 [![Dependencies Status](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)](https://github.com/Ce11an/spacy-cleaner/pulls?utf8=%E2%9C%93&q=is%3Apr%20author%3Aapp%2Fdependabot)
 
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/Ce11an/spacy-cleaner/blob/main/.pre-commit-config.yaml)
+[![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v1.json)](https://github.com/charliermarsh/ruff)
+[![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/Ce11an/tfl/blob/main/.pre-commit-config.yaml)
 [![Semantic Versions](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--versions-e10079.svg)](https://github.com/Ce11an/spacy-cleaner/releases)
 [![License](https://img.shields.io/github/license/Ce11an/spacy-cleaner)](https://github.com/Ce11an/spacy-cleaner/blob/main/LICENSE)
 [![codecov](https://codecov.io/gh/Ce11an/spacy-cleaner/branch/main/graph/badge.svg?token=H28KHYYFHX)](https://codecov.io/gh/Ce11an/spacy-cleaner)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Ce11an_spacy-cleaner&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Ce11an_spacy-cleaner)
+
 Easily clean text with spaCy!
 
 </div>
@@ -31,7 +31,7 @@ Easily clean text with spaCy!
 * Remove/replace URLs.
 * Perform lemmatisation.
 
-See our [docs](https://ce11an.github.io/spacy-cleaner/) for more information.
+See our [docs](https://ce11an.github.io/spacy-cleaner/) for more information
 
 ## Installation
 
@@ -51,8 +51,7 @@ poetry add spacy-cleaner
   for:
 ```python
 import spacy
-import spacy_cleaner
-from spacy_cleaner.processing import removers, replacers, mutators
+from spacy_cleaner import processing, Cleaner
 
 model = spacy.load("en_core_web_sm")
 ```
@@ -62,11 +61,11 @@ Class `Pipeline` allows for configurable cleaning of text using `spaCy`. The
   tokens:
 
 ```python
-pipeline = spacy_cleaner.Cleaner(
+ cleaner = Cleaner( 
     model,
-    removers.remove_stopword_token,
-    replacers.replace_punctuation_token,
-    mutators.mutate_lemma_token,
+    processing.remove_stopword_token,
+    processing.replace_punctuation_token,
+    processing.mutate_lemma_token,
 )
 ```
 
@@ -75,7 +74,7 @@ Next the `pipeline` can be called with the method `clean` to clean a list of
 ```python
 texts = ["Hello, my name is Cellan! I love to swim!"]
 
-pipeline.clean(texts)
+cleaner.clean(texts)
 ```
 
 <details markdown="1">
@@ -92,158 +91,6 @@ Giving the output:
 ```python
 ['hello _IS_PUNCT_ Cellan _IS_PUNCT_ love swim _IS_PUNCT_']
 ```
-
-### Makefile usage
-
-[`Makefile`](https://github.com/Ce11an/spacy-cleaner/blob/main/Makefile) contains a lot of functions for faster development.
-
-<details>
-<summary>1. Download and remove Poetry</summary>
-<p>
-
-To download and install Poetry run:
-
-```bash
-make poetry-download
-```
-
-To uninstall
-
-```bash
-make poetry-remove
-```
-
-</p>
-</details>
-
-<details>
-<summary>2. Install all dependencies and pre-commit hooks</summary>
-<p>
-
-Install requirements:
-
-```bash
-make install
-```
-
-Pre-commit hooks can be installed after `git init` via
-
-```bash
-make pre-commit-install
-```
-
-</p>
-</details>
-
-<details>
-<summary>3. Codestyle</summary>
-<p>
-
-Automatic formatting uses `pyupgrade`, `isort` and `black`.
-
-```bash
-make codestyle
-
-# or use synonym
-make formatting
-```
-
-Codestyle checks only, without rewriting files:
-
-```bash
-make check-codestyle
-```
-
-> Note: `check-codestyle` uses `isort`, `black` and `darglint` library
-
-Update all dev libraries to the latest version using one command
-
-```bash
-make update-dev-deps
-```
-
-</details>
-
-<details>
-<summary>4. Type checks</summary>
-<p>
-
-Run `mypy` static type checker
-
-```bash
-make mypy
-```
-
-</p>
-</details>
-
-<details>
-<summary>5. Tests with coverage badges</summary>
-<p>
-
-Run `pytest`
-
-```bash
-make test
-```
-
-</p>
-</details>
-
-<details>
-<summary>6. All linters</summary>
-<p>
-
-Of course there is a command to ~~rule~~ run all linters in one:
-
-```bash
-make lint
-```
-
-the same as:
-
-```bash
-make test && make check-codestyle && make mypy
-```
-
-</p>
-</details>
-
-<details>
-<summary>7. Cleanup</summary>
-<p>
-Delete pycache files
-
-```bash
-make pycache-remove
-```
-
-Remove package build
-
-```bash
-make build-remove
-```
-
-Delete .DS_STORE files
-
-```bash
-make dsstore-remove
-```
-
-Remove .mypy_cache
-
-```bash
-make mypycache-remove
-```
-
-Or to remove all above run:
-
-```bash
-make cleanup
-```
-
-</p>
-</details>
 
 ## 📈 Releases
 
@@ -280,7 +127,7 @@ This project is licensed under the terms of the `MIT` license. See [LICENSE](htt
 @misc{spacy-cleaner,
   author = {spacy-cleaner},
   title = {Easily clean text with spaCy!},
-  year = {2022},
+  year = {2023},
   publisher = {GitHub},
   journal = {GitHub repository},
   howpublished = {\url{https://github.com/Ce11an/spacy-cleaner}}

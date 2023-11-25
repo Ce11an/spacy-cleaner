@@ -20,7 +20,7 @@ install: ## Install the Python dependencies, including those for development and
 
 .PHONY: fmt-check
 fmt-check: ## Check for formatting errors.
-	poetry run ruff check .
+	poetry run ruff check --output-format=github .
 
 .PHONY: type-check
 type-check: ## Check for typing errors.
@@ -30,9 +30,13 @@ type-check: ## Check for typing errors.
 test: ## Test code
 	poetry run pytest --cov-report term --cov-report xml:coverage.xml --cov-report=html tests --cov=spacy_cleaner
 
+.PHONY: serve-docs
+serve-docs: ## Serve the documentation.
+	poetry run mkdocs serve
+
 .PHONY: coverage-remove
 coverage-remove:
-	rm -rf .coverage
+	rm -rf .coverage*
 	rm -rf htmlcov/
 	rm -rf coverage.xml
 	rm -rf gitlab-report.xml
