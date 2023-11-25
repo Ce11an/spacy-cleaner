@@ -24,9 +24,9 @@ jobs:
           - os: Ubuntu
             image: ubuntu-latest
           - os: Windows
-            image: windows-2023
+            image: windows-latest
           - os: macOS
-            image: macos-13
+            image: macos-latest
       fail-fast: false
 
     steps:
