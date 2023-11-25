@@ -6,35 +6,19 @@ on:
     types: [opened, reopened]
 
 jobs:
-  run:
-    runs-on: ubuntu-latest
+  code-coverage:
+    runs-on: ${{ matrix.image }}
+    strategy:
+      matrix:
+        os: [ Ubuntu ]
+        python-version: [ "3.8" ]
+        include:
+          - os: Ubuntu
+            image: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9'
-
-      - name: Get full Python version
-        id: full-python-version
-        run: python -c "import sys; print(sys.version)"
-
-      - name: Bootstrap poetry
-        run: |
-          curl -sL https://install.python-poetry.org | python3 -
-
-      - name: Update PATH
-        run: echo "$HOME/.local/bin" >> $GITHUB_PATH
-
-      - name: Configure poetry
-        run: poetry config virtualenvs.in-project true
-
-      - name: Install dependencies
-        run: poetry install
-
-      - name: Install pytest plugin
-        run: poetry run pip install pytest-github-actions-annotate-failures
+      - uses: actions/checkout@v4
+      - name: Build Python
+        uses: ./.github/actions
 
       - name: Run pytest
         run:  poetry run pytest --cov-report xml --cov=spacy_cleaner tests/

@@ -1,28 +1,31 @@
-## Description
+Thank you for submitting this pull request! We appreciate you spending the time to work on these changes.
 
-<!-- Add a more detailed description of the changes if needed. -->
+## What does this change do?
 
-## Related Issue
+<!-- Provide a description of what this pull request does. -->
 
-<!-- If your PR refers to a related issue, link it here. -->
+## Is this related to any issues?
 
-## Type of Change
+<!-- If this pull request is related to any other pull request or issue, or resolves any issues - then link all related pull requests and issues here. -->
 
-<!-- Mark with an `x` all the checkboxes that apply (like `[x]`) -->
+## What is your testing strategy?
 
-- [ ] 📚 Examples / docs / tutorials / dependencies update
-- [ ] 🔧 Bug fix (non-breaking change which fixes an issue)
-- [ ] 🥂 Improvement (non-breaking change which improves an existing feature)
-- [ ] 🚀 New feature (non-breaking change which adds functionality)
-- [ ] 💥 Breaking change (fix or feature that would cause existing functionality to change)
-- [ ] 🔐 Security fix
+<!-- Write your test plan here. If you changed any code, please provide us with clear instructions on how you verified your changes work. -->
 
-## Checklist
+## Before submitting
 
-<!-- Mark with an `x` all the checkboxes that apply (like `[x]`) -->
+<!-- Please make sure you've completed the following steps before submitting this pull request. -->
 
-- [ ] I've read the [`CODE_OF_CONDUCT.md`](https://github.com/Ce11an/spacy-cleaner/blob/mian/CODE_OF_CONDUCT.md) document.
-- [ ] I've read the [`CONTRIBUTING.md`](https://github.com/Ce11an/spacy-cleaner/blob/main/CONTRIBUTING.md) guide.
-- [ ] I've updated the code style using `make codestyle`.
-- [ ] I've written tests for all new methods and classes that I created.
-- [ ] I've written the docstring in Google style format for all the methods and classes that I used.
+- [ ] Did you verify new and existing tests pass locally with your changes?
+- [ ] Did you update the documentation?
+- [ ] Did you list all breaking changes introduced by this pull request?
+
+## Pull Request Reviewer Checklist
+
+<!-- Please make sure you've completed the following steps before accepting this pull request. -->
+
+- [ ] Did you verify the code runs locally?
+- [ ] Did you verify the code follows the style guidelines of this project?
+- [ ] Did you verify the code is commented where it should be?
+- [ ] Did you verify the code has proper tests?
+- [ ] Did you verify the code has documentation?
