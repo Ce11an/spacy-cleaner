@@ -1,11 +1,12 @@
 """Fixtures for tests."""
+from typing import List
 
 import pytest
 import spacy
 
 
 @pytest.fixture()
-def texts() -> list[str]:
+def texts() -> List[str]:
     """Return a list of texts."""
     return [
         "spacy-cleaner is the first package I have made so I am very "

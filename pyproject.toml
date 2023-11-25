@@ -29,6 +29,7 @@ python = ">=3.8,<3.11"
 spacy = "~=3.7.2"
 tqdm = "~=4.66.1"
 spacy-lookups-data = "~=1.0.5"
+types-tqdm = "^4.66.0.5"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.1.6"
@@ -72,7 +73,8 @@ exclude = [
 target-version = "py38"
 
 ignore = [
-    "ANN101"
+    "ANN101",
+    "D107"
 ]
 
 [tool.ruff.lint.per-file-ignores]

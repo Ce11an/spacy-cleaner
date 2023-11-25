@@ -1,6 +1,16 @@
 """Class `Cleaner` allows for configurable cleaning of text using `spaCy`."""
 
-from typing import Any, Optional, TypeVar, Union, List, Dict, Callable, Iterable
+from typing import (
+    Any,
+    Callable,
+    Dict,
+    Iterable,
+    List,
+    Optional,
+    Tuple,
+    TypeVar,
+    Union,
+)
 
 import spacy
 import tqdm
@@ -52,11 +62,11 @@ class Cleaner:
         self.processors = processors
 
     # noinspection PyTypeChecker,PyDefaultArgumentdd,PyDefaultArgument
-    def clean(  # noqa: F811
+    def clean(  # noqa: PLR0913
         self,
         texts: Union[
             Iterable[Union[str, tokens.Doc]],
-            Iterable[tuple[Union[str, tokens.Doc], _AnyContext]],
+            Iterable[Tuple[Union[str, tokens.Doc], _AnyContext]],
         ],
         *,
         as_tuples: bool = False,
@@ -88,7 +98,7 @@ class Cleaner:
         return [
             helpers.clean_doc(doc, *self.processors)
             for doc in tqdm.tqdm(
-                self.model.pipe(
+                self.model.pipe(    # type: ignore[call-overload]
                     texts,
                     as_tuples=as_tuples,
                     batch_size=batch_size,
@@ -97,6 +107,6 @@ class Cleaner:
                     n_process=n_process,
                 ),
                 desc="Cleaning Progress",
-                total=len(texts),
+                total=len(texts), # type: ignore[arg-type]
             )
         ]

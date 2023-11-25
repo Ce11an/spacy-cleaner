@@ -1,5 +1,5 @@
 """Test the `Cleaner` class."""
-
+from typing import List
 
 import spacy
 
@@ -9,7 +9,7 @@ from spacy_cleaner import Cleaner, processing
 class TestCleaner:
     """Test the `Cleaner` class."""
 
-    def test_clean(self, model: spacy.Language, texts: list[str]) -> None:
+    def test_clean(self, model: spacy.Language, texts: List[str]) -> None:
         """Test the `clean` method."""
         cleaner = Cleaner(
             model,

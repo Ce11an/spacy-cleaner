@@ -37,7 +37,7 @@ def token_pipe(
         A string of the token after being processed.
     """
     for processor in processors:
-        tok = processor(tok)
+        tok = processor(tok)  # type: ignore[assignment]
         if isinstance(tok, str):
             return str(tok)
     return str(tok)
