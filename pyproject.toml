@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "spacy-cleaner"
-version = "3.2.0"
+version = "3.2.1"
 description = "Easily clean text with spaCy!"
 readme = "README.md"
 authors = ["spacy-cleaner <hallcellan@gmail.com>"]
