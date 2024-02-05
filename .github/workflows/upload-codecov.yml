@@ -24,4 +24,4 @@ jobs:
         run:  poetry run pytest --cov-report xml --cov=spacy_cleaner tests/
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
