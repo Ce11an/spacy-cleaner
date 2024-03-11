@@ -35,7 +35,7 @@ types-tqdm = "^4.66.0.5"
 ruff = "^0.1.6"
 mypy = "^1.7.0"
 pre-commit = "^3.3.5"
-pytest = "^7.4.3"
+pytest = ">=7.4.3,<9.0.0"
 pytest-cov = "^4.1.0"
 mkdocs-material = "^9.4.12"
 mkdocstrings = {extras = ["python"], version = "^0.24.0"}
