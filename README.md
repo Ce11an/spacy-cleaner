@@ -19,6 +19,9 @@ Easily clean text with spaCy!
 
 </div>
 
+> [!IMPORTANT]
+> This repository is now read-only and archived.
+
 ## Key Features
 
 **spacy-cleaner** utilises `spaCy` `Language` models to replace, remove, and 
